@@ -6,11 +6,11 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:39:51 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/03/24 19:44:08 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/03/27 22:41:19 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../includes/so_long.h"
 
 // static void error(void)
 // {
