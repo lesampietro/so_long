@@ -1,3 +1,6 @@
 {
-    "cmake.sourceDirectory": "/nfs/homes/lsampiet/so_long/so_long_01/MLX42/tests"
+    "files.associations": {
+        "functional": "c",
+        "typeinfo": "c"
+    }
 }
