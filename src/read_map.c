@@ -6,11 +6,13 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 18:27:29 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/04/07 17:37:44 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/04/07 18:05:21 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+git 
 
 char	**read_map(char *map)
 {
