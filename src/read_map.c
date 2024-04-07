@@ -6,27 +6,49 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 18:27:29 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/04/07 18:05:21 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/04/07 18:58:14 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-git 
+int		count_lines(char *map)
+{
+	int		n;
+	int		fd;
+	char	*read_map;
+
+	n = 0;
+	fd = open(map, O_RDONLY);
+	while ((read_map = get_next_line(fd)))
+	{
+		free(read_map);
+		n++;
+	}
+	close(fd);
+	return (n);
+}
 
 char	**read_map(char *map)
 {
 	int		fd;
-	char	*new_map;
+	int		i;
+	int		n_lines;
+	char	*tmp_map;
+	char	**new_map;
 	
+	i = 0;
 	if(!map)
 		exit(ft_printf("Map is empty"));
+	n_lines = count_lines(map);
+	new_map = malloc(sizeof(char *) * (n_lines + 1));
+	new_map[n_lines] = NULL;
 	fd = open(map, O_RDONLY);
-	while((new_map = get_next_line(fd)))
+	while ((n_lines >= 0) && (tmp_map = get_next_line(fd)))
 	{
-		ft_printf("%s", new_map);
-		free(new_map);
+		new_map[i] = tmp_map;
+		i++;		
 	}
 	close(fd);
-	return (NULL);
+	return (new_map);
 }
