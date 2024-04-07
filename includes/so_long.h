@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 18:50:53 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/03/27 22:42:36 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/04/07 17:39:52 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@
 #include "../lib/libft/libft.h"
 
 char		**read_map(char *map);
+void		is_invalid_entry(char **file_ext);
 
 #endif

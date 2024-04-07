@@ -1,6 +1,6 @@
 NAME= so_long
 # NAME_BONUS= so_long_bonus
-C_FLAGS= -Wextra -Wall -Werror
+C_FLAGS:= -Wextra -Wall -Werror
 0MLX_FLAGS= -Wunreachable-code
 MLX_FLAGS= -ldl -lglfw -pthread -lm
 LIBMLX= ./lib/MLX42
@@ -13,13 +13,14 @@ LIBS= $(LIBMLX)/build/libmlx42.a $(LIBFT)/libft.a
 # SRC= $(shell find ./src -iname ".c")
 SRC= ./src/so_long.c \
 		./src/read_map.c \
+		./src/validate_map.c \
 
 # BONUS= $(shell find ./bonus -iname ".c")
 INCLUDES= -I includes -I $(LIBMLX)/include -I $(LIBFT)/ -I $(LIBFT)/ft_printf/includes -I $(LIBFT)/gnl/includes
 OBJS= $(SRC:%.c=%.o)
 # BONUS_OBJS= $(BONUS:%.c=%.o)
 
-all: libmlx libft $(NAME)
+all: $(NAME)
 	@echo "All done!🥳"
 
 libmlx:
@@ -33,7 +34,7 @@ libft:
 %.o: %.c $(HEADERS)
 	@$(CC) $(C_FLAGS) $(0MLX_FLAGS) -o $@ -c $< && echo "Compiling: $(notdir $<)"
 
-$(NAME): $(OBJS)
+$(NAME): libmlx libft  $(OBJS)
 	@echo "Creating $(NAME)"
 	@$(CC) $(OBJS) $(LIBS) $(INCLUDES) -o $(NAME) $(MLX_FLAGS)
 
@@ -60,3 +61,5 @@ fclean: clean
 re: fclean all
 
 .PHONY: all, clean, fclean, re, libmlx
+
+.SILENT:

@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 18:27:29 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/03/29 14:50:52 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/04/07 17:37:44 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ char	**read_map(char *map)
 		ft_printf("%s", new_map);
 		free(new_map);
 	}
-	// ft_printf("line %d->NULL", line_count++);
 	close(fd);
 	return (NULL);
 }
