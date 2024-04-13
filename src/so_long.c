@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:39:51 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/04/07 19:13:08 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/04/07 20:00:44 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,16 @@ int32_t main(int argc, char **argv)
 	
 	if(argc != 2)
 		exit(ft_printf("Missing argument\n"));
-	is_invalid_entry(&argv[1]);
+	is_valid_entry(&argv[1]);
 	new_map = read_map(argv[1]);
-	// exit(ft_printf("Could not open map"));
+	is_valid_map(new_map);
 }
 		// if(new_map)
 		// {
 		// 	return (1);
-		// 	// check_map_ext(argv[1]);
 		// 	// check_map_shape(argv[1]);
 		// 	// check_map_chars(argv[1]);
+		// 	// check_map_walls;
+		// 	// check_col_lin_size;
+		// 	// floodfill;
 		// }

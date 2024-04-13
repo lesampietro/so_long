@@ -14,6 +14,7 @@ LIBS= $(LIBMLX)/build/libmlx42.a $(LIBFT)/libft.a
 SRC= ./src/so_long.c \
 		./src/read_map.c \
 		./src/validate_map.c \
+		./src/validate_entry.c \
 
 # BONUS= $(shell find ./bonus -iname ".c")
 INCLUDES= -I includes -I $(LIBMLX)/include -I $(LIBFT)/ -I $(LIBFT)/ft_printf/includes -I $(LIBFT)/gnl/includes
