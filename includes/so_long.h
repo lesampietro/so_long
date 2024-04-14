@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 18:50:53 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/04/13 17:54:38 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/04/14 18:08:59 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,22 @@ typedef struct s_map	t_map;
 
 struct s_map
 {
+	int	player;
+	int	collects;
+	int	exit;
 	int	columns;
 	int	lines;
-	int	collects;
-	int	player;
-	int	exit;
 };
 
 char	**read_map(char *map);
 void	is_valid_entry(char **file_ext);
 void	is_valid_map(char **file_ext);
+void	newline_off(char **map);
 void	check_map_chars(char **map, t_map *map_data);
+void	check_chars_count(t_map *map_data);
+void	occurence_count(char **map, t_map *map_data);
+void	check_map_shape(char **map, t_map *map_data);
+void	check_col_lin_size(char **map, t_map *map_data);
+void	check_map_walls(char **map, t_map *map_data);
 
 #endif
