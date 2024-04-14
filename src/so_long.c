@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:39:51 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/04/07 20:00:44 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/04/14 20:46:28 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,16 @@
 int32_t main(int argc, char **argv)
 {
 	char	**new_map;
-	
+	int		i;
+
+	i = 0;
 	if(argc != 2)
-		exit(ft_printf("Missing argument\n"));
+		ft_error("Error.\nMissing argument.\n", NULL);
 	is_valid_entry(&argv[1]);
 	new_map = read_map(argv[1]);
 	is_valid_map(new_map);
+	free_map(new_map);
+	return (EXIT_SUCCESS);
 }
 		// if(new_map)
 		// {

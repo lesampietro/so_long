@@ -16,6 +16,8 @@ SRC= ./src/so_long.c \
 		./src/validate_map.c \
 		./src/validate_entry.c \
 		./src/validate_chars.c \
+		./src/floodfill.c \
+		./src/utils.c \
 
 # BONUS= $(shell find ./bonus -iname ".c")
 INCLUDES= -I includes -I $(LIBMLX)/include -I $(LIBFT)/ -I $(LIBFT)/ft_printf/includes -I $(LIBFT)/gnl/includes

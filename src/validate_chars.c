@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:40:08 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/04/14 18:06:09 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/04/14 20:46:47 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	newline_off(char **map)
 	int	j;
 
 	i = 0;
-	j = 0;
 	while(map[i])
 	{
+		j = 0;
 		while (map[i][j])
 		{
 			if (map[i][j] == '\n')
@@ -44,7 +44,7 @@ void	check_map_chars(char **map, t_map *map_data)
 		while(map[i][j])
 		{
 			if(!(ft_strchr(VALID_CHARSET, map[i][j])))
-				exit(ft_printf("Map with invalid characters\n"));
+				ft_error("Error.\nMap with invalid characters.n", map);
 			j++;
 		}
 		i++;
@@ -53,14 +53,14 @@ void	check_map_chars(char **map, t_map *map_data)
 	map_data->columns = j;
 }
 
-void	check_chars_count(t_map *map_data)
+void	check_chars_count(char **map, t_map *map_data)
 {
 	if (map_data->player != 1)
-		exit(ft_printf("Invalid number of players.\n"));
+		ft_error("Error.\nInvalid number of players.\n", map);
 	else if (map_data->exit != 1)
-		exit(ft_printf("Invalid number of exits.\n"));
+		ft_error("Error.\nInvalid number of exits.\n", map);
 	else if (map_data->collects < 1)
-		exit(ft_printf("There are no collectibles on the map.\n"));
+		ft_error("Error.\nThere are no collectibles on the map.\n", map);
 	return;
 }
 
@@ -88,5 +88,5 @@ void	occurence_count(char **map, t_map *map_data)
 		}
 		i++;
 	}
-	check_chars_count(map_data);
+	check_chars_count(map, map_data);
 }
