@@ -6,13 +6,23 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:40:08 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/04/14 19:53:02 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/04/14 21:23:25 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-
+void	flood_path(char **map, int x, int y)
+{
+	if(map[x][y] != '1')
+	{
+		map[x][y] = '1';
+		flood_path(map, x + 1, y);
+		flood_path(map, x - 1, y);
+		flood_path(map, x, y + 1);
+		flood_path(map, x, y - 1);
+	}
+}
 
 void	get_player_pos(char **map, t_map *map_data)
 {
@@ -34,12 +44,30 @@ void	get_player_pos(char **map, t_map *map_data)
 		}
 		i++;
 	}
-	ft_printf("%i\n%i", map_data->position.x, map_data->position.y);
+}
+
+void	check_flood(char **map)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (ft_strchr("CE", map[i][j]))
+				ft_error("Error.\nThere is at least one unreachable collectible or exit.\n", map);
+			j++;
+		}
+		i++;
+	}
 }
 
 void	floodfill(char **map, t_map *map_data)
 {
 	get_player_pos(map, map_data);
-	//checar as posições em volta do player
-	//checar se em todas as linhas tem pelo menos um "0"
+	flood_path(map, map_data->position.x, map_data->position.y);
+	check_flood(map);
 }
