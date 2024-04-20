@@ -5,24 +5,26 @@ C_FLAGS:= -Wextra -Wall -Werror
 MLX_FLAGS= -ldl -lglfw -pthread -lm
 LIBMLX= ./lib/MLX42
 LIBFT= ./lib/libft
+BIN= ./bin/
+SRC_D= ./src/
 
 CC= cc
 # HEADERS= -I ./include -I $(LIBMLX)/include
 HEADERS= ./includes/so_long.h
 LIBS= $(LIBMLX)/build/libmlx42.a $(LIBFT)/libft.a
-# SRC= $(shell find ./src -iname ".c")
-SRC= ./src/so_long.c \
-		./src/read_map.c \
-		./src/validate_map.c \
-		./src/validate_entry.c \
-		./src/validate_chars.c \
-		./src/floodfill.c \
-		./src/utils.c \
-		./src/init_game.c \
+SRC= so_long.c \
+		read_map.c \
+		validate_map.c \
+		validate_entry.c \
+		validate_chars.c \
+		floodfill.c \
+		utils.c \
+		init_game.c \
 
 # BONUS= $(shell find ./bonus -iname ".c")
+SRC:= $(addprefix $(SRC_D),$(SRC))
 INCLUDES= -I includes -I $(LIBMLX)/include -I $(LIBFT)/ -I $(LIBFT)/ft_printf/includes -I $(LIBFT)/gnl/includes
-OBJS= $(SRC:%.c=%.o)
+OBJS= $(patsubst $(SRC_D)%.c, $(BIN)%.o, $(SRC))
 # BONUS_OBJS= $(BONUS:%.c=%.o)
 
 all: $(NAME)
@@ -36,7 +38,8 @@ libft:
 	@echo "Compiling LIBFT..."
 	@make all bonus new -C $(LIBFT) $(C_FLAGS) --no-print-directory
 
-%.o: %.c $(HEADERS)
+$(BIN)%.o: $(SRC_D)%.c $(HEADERS)
+	@mkdir -p $(BIN)
 	@$(CC) $(C_FLAGS) $(0MLX_FLAGS) -o $@ -c $< && echo "Compiling: $(notdir $<)"
 
 $(NAME): libmlx libft  $(OBJS)
@@ -49,7 +52,7 @@ $(NAME): libmlx libft  $(OBJS)
 
 clean:
 	@echo "Cleaning objects..."
-	@rm -rf $(OBJS)
+	@rm -rf $(BIN)
 	@make clean -C $(LIBFT) --no-print-directory
 	@echo "Cleaning build..."
 	@rm -rf $(LIBMLX)/build
