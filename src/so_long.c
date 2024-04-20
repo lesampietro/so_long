@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:39:51 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/04/14 20:46:28 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/04/20 19:06:17 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int32_t main(int argc, char **argv)
 {
 	char	**new_map;
 	int		i;
+	t_game	game;
 
 	i = 0;
 	if(argc != 2)
@@ -29,6 +30,7 @@ int32_t main(int argc, char **argv)
 	is_valid_entry(&argv[1]);
 	new_map = read_map(argv[1]);
 	is_valid_map(new_map);
+	init_game(new_map, &game);
 	free_map(new_map);
 	return (EXIT_SUCCESS);
 }
