@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 18:50:53 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/04/20 19:06:45 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/04/21 19:33:09 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 typedef struct s_map	t_map;
 typedef struct s_pos	t_pos;
 typedef struct s_game	t_game;
+typedef struct s_img	t_img;
 
 struct s_pos
 {
@@ -48,6 +49,22 @@ struct s_game
 	mlx_t	*mlx;
 	int		col;
 	int		lin;
+	t_img	*texture;
+	t_img	*image;
+};
+
+struct s_texture
+{
+	mlx_texture_t	*wall;
+	mlx_texture_t	*floor;
+	mlx_texture_t	*player;
+	mlx_texture_t	*collects;
+	mlx_texture_t	*exit;
+	mlx_image_t		*wall_img;
+	mlx_image_t		*floor_img;
+	mlx_image_t		*player_img;
+	mlx_image_t		*collects_img;
+	mlx_image_t		*exit_img;
 };
 
 char	**read_map(char *map);
@@ -64,6 +81,6 @@ void	floodfill(char **map, t_map *map_data);
 void	get_player_pos(char **map, t_map *map_data);
 void	ft_error(char *str, char **map);
 void	free_map(char **map);
-int32_t	init_game(char **map, t_game *game);
+int32_t	init_game(char *argv, t_game *game);
 
 #endif
