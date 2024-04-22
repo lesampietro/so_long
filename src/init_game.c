@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:47:30 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/04/21 22:12:37 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/04/21 23:37:51 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,29 @@
 static void error(void)
 {
 	exit(EXIT_FAILURE);
+}
+
+// void	player_move_validation(t_game *game, t_pos *player_pos)
+// {
+// 	game->player_pos->x = (game->image->player_img->instances[0].x / 64);
+// 	game->player_pos->y = (game->image->player_img->instances[0].y / 64);
+	// if (keydata.action == MLX_PRESS)
+	// 	ft_printf("x=%i\ny=%i\n\n", game->image->player_img->instances[0].x, game->image->player_img->instances[0].y);
+// }
+
+void	player_moves(mlx_key_data_t keydata, void *param)
+{
+	t_game *game;
+
+	game = (t_game *)param;
+	if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS)
+		game->image->player_img->instances[0].y -= 64;
+	if (keydata.key == MLX_KEY_A && keydata.action == MLX_PRESS)
+		game->image->player_img->instances[0].x -= 64;
+	if (keydata.key == MLX_KEY_S && keydata.action == MLX_PRESS)
+		game->image->player_img->instances[0].y += 64;
+	if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS)
+		game->image->player_img->instances[0].x += 64;
 }
 
 void	put_player(t_game *game)
@@ -137,6 +160,7 @@ int32_t	init_game(char *argv, t_game *game)
 	if (!game->mlx)
 		error();
 	init_game_image(game);
+	mlx_key_hook(game->mlx, &player_moves, game);
 	mlx_loop(game->mlx);
 	delete_images(game);
 	mlx_terminate(game->mlx);
