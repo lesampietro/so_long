@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:47:30 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/04/21 21:46:30 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/04/21 21:51:43 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,16 @@ void	put_floor(t_game *game)
 		col = 0;
 		while (game->map[line][col])
 		{
-			if(game->map[line][col] == '0')
+			if (ft_strchr("0PCE", game->map[line][col]))
+			{
 				if (mlx_image_to_window(game->mlx, game->image->floor_img, col * TILE, line * TILE) < 0)
 					error();
+			}
+			else if (game->map[line][col] == '1')
+			{
+				if (mlx_image_to_window(game->mlx, game->image->wall_img, col * TILE, line * TILE) < 0)
+					error();
+			}
 			col++;
 		}
 		line++;
