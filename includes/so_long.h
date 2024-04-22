@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 18:50:53 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/04/21 19:33:09 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/04/21 20:49:59 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ struct s_game
 	t_img	*image;
 };
 
-struct s_texture
+struct s_img
 {
 	mlx_texture_t	*wall;
 	mlx_texture_t	*floor;
