@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:47:30 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/04/21 23:37:51 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/04/22 21:13:33 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,28 @@ void	player_moves(mlx_key_data_t keydata, void *param)
 		game->image->player_img->instances[0].y += 64;
 	if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS)
 		game->image->player_img->instances[0].x += 64;
+}
+
+void put_collects_n_exit(t_game *game)
+{
+	int line;
+	int col;
+
+	line = 0;
+	while (game->map[line])
+	{
+		col = 0;
+		while (game->map[line][col])
+		{
+			if (game->map[line][col] == 'C')
+			{
+				if (mlx_image_to_window(game->mlx, game->image->collects_img, col * TILE, line * TILE) < 0)
+					error();
+			}
+			col++;
+		}
+		line++;
+	}
 }
 
 void	put_player(t_game *game)
@@ -94,6 +116,7 @@ void	delete_images(t_game *game)
 	mlx_delete_image(game->mlx, game->image->floor_img);
 	mlx_delete_image(game->mlx, game->image->wall_img);
 	mlx_delete_image(game->mlx, game->image->player_img);
+	mlx_delete_image(game->mlx, game->image->collects_img);
 }
 
 void	delete_textures(t_game *game)
@@ -101,6 +124,7 @@ void	delete_textures(t_game *game)
 	mlx_delete_texture(game->texture->floor);
 	mlx_delete_texture(game->texture->wall);
 	mlx_delete_texture(game->texture->player);
+	mlx_delete_texture(game->texture->collects);
 }
 
 void	init_tile_images(t_game *game)
@@ -109,7 +133,9 @@ void	init_tile_images(t_game *game)
 	game->image->floor_img = mlx_texture_to_image(game->mlx, game->texture->floor);
 	game->image->wall_img = mlx_texture_to_image(game->mlx, game->texture->wall);
 	game->image->player_img = mlx_texture_to_image(game->mlx, game->texture->player);
-	if ((!(game->image->floor_img)) || (!(game->image->wall_img)) || (!(game->image->player_img)))
+	game->image->collects_img = mlx_texture_to_image(game->mlx, game->texture->collects);
+	if ((!(game->image->floor_img)) || (!(game->image->wall_img)) 
+	|| (!(game->image->player_img)) || (!(game->image->collects_img)))
 		error();
 }
 
@@ -119,7 +145,9 @@ void	init_tile_textures(t_game *game)
 	game->texture->floor = mlx_load_png("./assets/textures/floor-64px.png");
 	game->texture->wall = mlx_load_png("./assets/textures/wall-64px.png");
 	game->texture->player = mlx_load_png("./assets/player/pagu-01.png");
-	if ((!(game->texture->floor)) || (!(game->texture->wall)) || (!(game->image->player)))
+	game->texture->collects = mlx_load_png("./assets/textures/collect-64px.png");
+	if ((!(game->texture->floor)) || (!(game->texture->wall)) 
+	|| (!(game->image->player)) || (!(game->image->collects)))
 		error();
 	init_tile_images(game);
 	delete_textures(game);
@@ -129,7 +157,7 @@ void	init_game_image(t_game *game)
 {
 	init_tile_textures(game);
 	put_floor_n_walls(game);
-	// put_collects_n_exit(game);
+	put_collects_n_exit(game);
 	put_player(game);
 }
 
