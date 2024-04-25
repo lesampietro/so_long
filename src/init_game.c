@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:47:30 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/04/22 21:54:52 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/04/25 19:26:52 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,28 +40,6 @@ void	player_moves(mlx_key_data_t keydata, void *param)
 		game->image->player_img->instances[0].x += 64;
 }
 
-void put_collects_n_exit(t_game *game)
-{
-	int line;
-	int col;
-
-	line = 0;
-	while (game->map[line])
-	{
-		col = 0;
-		while (game->map[line][col])
-		{
-			if (game->map[line][col] == 'C')
-			{
-				if (mlx_image_to_window(game->mlx, game->image->collects_img, col * TILE, line * TILE) < 0)
-					error();
-			}
-			col++;
-		}
-		line++;
-	}
-}
-
 void	put_player(t_game *game)
 {
 	int line;
@@ -76,6 +54,28 @@ void	put_player(t_game *game)
 			if (game->map[line][col] == 'P')
 			{
 				if (mlx_image_to_window(game->mlx, game->image->player_img, col * TILE, line * TILE) < 0)
+					error();
+			}
+			col++;
+		}
+		line++;
+	}
+}
+
+void put_collects_n_exit(t_game *game)
+{
+	int line;
+	int col;
+
+	line = 0;
+	while (game->map[line])
+	{
+		col = 0;
+		while (game->map[line][col])
+		{
+			if (game->map[line][col] == 'C')
+			{
+				if (mlx_image_to_window(game->mlx, game->image->collects_img, col * TILE, line * TILE) < 0)
 					error();
 			}
 			else if (game->map[line][col] == 'E')
@@ -120,18 +120,18 @@ void	delete_images(t_game *game)
 {
 	mlx_delete_image(game->mlx, game->image->floor_img);
 	mlx_delete_image(game->mlx, game->image->wall_img);
-	mlx_delete_image(game->mlx, game->image->player_img);
 	mlx_delete_image(game->mlx, game->image->collects_img);
 	mlx_delete_image(game->mlx, game->image->exit_img);
+	mlx_delete_image(game->mlx, game->image->player_img);
 }
 
 void	delete_textures(t_game *game)
 {
 	mlx_delete_texture(game->texture->floor);
 	mlx_delete_texture(game->texture->wall);
-	mlx_delete_texture(game->texture->player);
 	mlx_delete_texture(game->texture->collects);
 	mlx_delete_texture(game->texture->exit);
+	mlx_delete_texture(game->texture->player);
 }
 
 void	init_tile_images(t_game *game)
@@ -139,9 +139,9 @@ void	init_tile_images(t_game *game)
 	game->image = malloc(sizeof(t_img));
 	game->image->floor_img = mlx_texture_to_image(game->mlx, game->texture->floor);
 	game->image->wall_img = mlx_texture_to_image(game->mlx, game->texture->wall);
-	game->image->player_img = mlx_texture_to_image(game->mlx, game->texture->player);
 	game->image->collects_img = mlx_texture_to_image(game->mlx, game->texture->collects);
 	game->image->exit_img = mlx_texture_to_image(game->mlx, game->texture->exit);
+	game->image->player_img = mlx_texture_to_image(game->mlx, game->texture->player);
 	if ((!(game->image->floor_img)) || (!(game->image->wall_img)) || (!(game->image->player_img)) 
 	|| (!(game->image->collects_img)) || (!(game->image->exit_img)))
 		error();
@@ -152,9 +152,9 @@ void	init_tile_textures(t_game *game)
 	game->texture = malloc(sizeof(t_img));
 	game->texture->floor = mlx_load_png("./assets/textures/floor-64px.png");
 	game->texture->wall = mlx_load_png("./assets/textures/wall-64px.png");
-	game->texture->player = mlx_load_png("./assets/player/pagu-01.png");
 	game->texture->collects = mlx_load_png("./assets/textures/collect-64px.png");
 	game->texture->exit = mlx_load_png("./assets/textures/exit-64px.png");
+	game->texture->player = mlx_load_png("./assets/player/pagu-idle-03-64px.png");
 	if ((!(game->texture->floor)) || (!(game->texture->wall)) || (!(game->image->player)) 
 	|| (!(game->image->collects))|| (!(game->image->collects))|| (!(game->image->exit)))
 		error();
