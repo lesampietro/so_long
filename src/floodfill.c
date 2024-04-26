@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:40:08 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/04/14 21:31:00 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/04/25 22:39:25 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	flood_path(char **map, int x, int y)
 	}
 }
 
-void	get_player_pos(char **map, t_map *map_data)
+void	get_player_pos(char **map, t_pos *position)
 {
 	int i;
 	int j;
@@ -37,8 +37,8 @@ void	get_player_pos(char **map, t_map *map_data)
 		{
 			if (map[i][j] == 'P')
 			{
-				map_data->position.x = i;
-				map_data->position.y = j;
+				position->x = j;
+				position->y = i;
 			}
 			j++;
 		}
@@ -67,7 +67,7 @@ void	check_flood(char **map)
 
 void	floodfill(char **map, t_map *map_data)
 {
-	get_player_pos(map, map_data);
+	get_player_pos(map, &map_data->position);
 	flood_path(map, map_data->position.x, map_data->position.y);
 	check_flood(map);
 }

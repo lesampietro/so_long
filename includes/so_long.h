@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 18:50:53 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/04/25 21:42:09 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/04/25 22:19:54 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,13 @@ typedef struct s_map	t_map;
 typedef struct s_pos	t_pos;
 typedef struct s_game	t_game;
 typedef struct s_img	t_img;
+
+enum directions {
+	RIGHT,
+	LEFT,
+	TOP,
+	BOTTOM
+};
 
 struct s_pos
 {
@@ -79,7 +86,7 @@ void	check_map_shape(char **map, t_map *map_data);
 void	check_col_lin_size(char **map, t_map *map_data);
 void	check_map_walls(char **map, t_map *map_data);
 void	floodfill(char **map, t_map *map_data);
-void	get_player_pos(char **map, t_map *map_data);
+void	get_player_pos(char **map, t_pos *position);
 void	ft_error(char *str, char **map);
 void	free_map(char **map);
 int32_t	init_game(char *argv, t_game *game);

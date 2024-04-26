@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:47:30 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/04/25 21:52:18 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/04/25 22:51:32 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,48 @@ static void error(void)
 {
 	exit(EXIT_FAILURE);
 }
+// fazer funcao que atualiza a posição do player no mapa e anda com a instancia (fazer quebrando a função abaixo em 2)
+// fazer func que conta os coletaveis
+// fazer func que diminui os coletaveis quando passa o gato em cima + checa se tem o collect na posição que vamos nos mover (mesma coisa pra idntificar paredes porem com 'C')
+// com a mesma lógica acima nós vamos identificar a saída e quando terminarem os collects, a saída vira exit
+// fazer o contador de passos dados com printf
+// animar o gato (muito importante!!!)
 
-// void	player_move_validation(t_game *game, t_pos *player_pos)
-// {
-// 	game->player_pos->x = (game->image->player_img->instances[0].x / 64);
-// 	game->player_pos->y = (game->image->player_img->instances[0].y / 64);
-	// if (keydata.action == MLX_PRESS)
-	// 	ft_printf("x=%i\ny=%i\n\n", game->image->player_img->instances[0].x, game->image->player_img->instances[0].y);
-// }
+void player_move_validation(t_game *game, int movement)
+{
+	if(movement == TOP)
+	{
+		if(game->map[game->player_pos.y - 1][game->player_pos.x] != '1')
+		{
+			game->player_pos.y--;
+			game->image->player_img->instances[0].y -= 64;
+		}
+	}
+	if (movement == LEFT)
+	{
+		if (game->map[game->player_pos.y][game->player_pos.x - 1] != '1')
+		{
+			game->player_pos.x--;
+			game->image->player_img->instances[0].x -= 64;
+		}
+	}
+	if(movement == RIGHT)
+	{
+		if (game->map[game->player_pos.y][game->player_pos.x + 1] != '1')
+		{
+			game->player_pos.x++;
+			game->image->player_img->instances[0].x += 64;
+		}
+	}
+	if (movement == BOTTOM)
+	{
+		if (game->map[game->player_pos.y + 1][game->player_pos.x] != '1')
+		{
+			game->player_pos.y++;
+			game->image->player_img->instances[0].y += 64;
+		}
+	}
+}	
 
 void	player_moves(mlx_key_data_t keydata, void *param)
 {
@@ -31,13 +65,13 @@ void	player_moves(mlx_key_data_t keydata, void *param)
 
 	game = (t_game *)param;
 	if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS)
-		game->image->player_img->instances[0].y -= 64;
+		player_move_validation(game, TOP);
 	if (keydata.key == MLX_KEY_A && keydata.action == MLX_PRESS)
-		game->image->player_img->instances[0].x -= 64;
+		player_move_validation(game, LEFT);
 	if (keydata.key == MLX_KEY_S && keydata.action == MLX_PRESS)
-		game->image->player_img->instances[0].y += 64;
+		player_move_validation(game, BOTTOM);
 	if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS)
-		game->image->player_img->instances[0].x += 64;
+		player_move_validation(game, RIGHT);
 }
 
 void	put_player(t_game *game)
@@ -199,6 +233,8 @@ int32_t	init_game(char *argv, t_game *game)
 	if (!game->mlx)
 		error();
 	init_game_image(game);
+	get_player_pos(game->map, &game->player_pos);
+	// ft_printf("%i\n%i\n", game->player_pos.x, game->player_pos.y);
 	mlx_key_hook(game->mlx, &player_moves, game);
 	mlx_loop(game->mlx);
 	delete_images(game);
