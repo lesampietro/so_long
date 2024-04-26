@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:39:51 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/04/21 19:30:53 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/04/25 21:51:28 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,18 @@
 // 	exit(EXIT_FAILURE);
 // }
 
+void init_values(t_game *game)
+{
+	game->map = NULL;
+	game->mlx = NULL;
+	game->col = 0;
+	game->lin = 0;
+	game->texture = NULL;
+	game->image = NULL;
+	game->player_pos.x = 0;
+	game->player_pos.y = 0;
+}
+
 int32_t main(int argc, char **argv)
 {
 	char	**new_map;
@@ -25,6 +37,7 @@ int32_t main(int argc, char **argv)
 	t_game	game;
 
 	i = 0;
+	init_values(&game);
 	if(argc != 2)
 		ft_error("Error.\nMissing argument.\n", NULL);
 	is_valid_entry(&argv[1]);
@@ -34,3 +47,7 @@ int32_t main(int argc, char **argv)
 	init_game(argv[1], &game);
 	return (EXIT_SUCCESS);
 }
+
+	// game = malloc(sizeof(t_game *));
+	// if (!game)
+	// 	ft_error("Error.\n", NULL);

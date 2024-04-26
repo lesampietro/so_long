@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:47:30 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/04/25 19:26:52 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/04/25 21:52:18 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ void	delete_images(t_game *game)
 	mlx_delete_image(game->mlx, game->image->collects_img);
 	mlx_delete_image(game->mlx, game->image->exit_img);
 	mlx_delete_image(game->mlx, game->image->player_img);
+	free(game->image);
 }
 
 void	delete_textures(t_game *game)
@@ -132,6 +133,7 @@ void	delete_textures(t_game *game)
 	mlx_delete_texture(game->texture->collects);
 	mlx_delete_texture(game->texture->exit);
 	mlx_delete_texture(game->texture->player);
+	free(game->texture);
 }
 
 void	init_tile_images(t_game *game)
@@ -155,8 +157,8 @@ void	init_tile_textures(t_game *game)
 	game->texture->collects = mlx_load_png("./assets/textures/collect-64px.png");
 	game->texture->exit = mlx_load_png("./assets/textures/exit-64px.png");
 	game->texture->player = mlx_load_png("./assets/player/pagu-idle-03-64px.png");
-	if ((!(game->texture->floor)) || (!(game->texture->wall)) || (!(game->image->player)) 
-	|| (!(game->image->collects))|| (!(game->image->collects))|| (!(game->image->exit)))
+	if ((!(game->texture->floor)) || (!(game->texture->wall)) || (!(game->texture->player)) 
+	|| (!(game->texture->collects))|| (!(game->texture->collects))|| (!(game->texture->exit)))
 		error();
 	init_tile_images(game);
 	delete_textures(game);
@@ -200,6 +202,7 @@ int32_t	init_game(char *argv, t_game *game)
 	mlx_key_hook(game->mlx, &player_moves, game);
 	mlx_loop(game->mlx);
 	delete_images(game);
+	free_map(game->map);
 	mlx_terminate(game->mlx);
 	return (EXIT_SUCCESS);
 }

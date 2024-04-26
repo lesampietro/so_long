@@ -6,11 +6,16 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 20:15:23 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/04/14 20:45:42 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/04/25 21:49:34 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+// void	free_game(t_game *game)
+// {
+	
+// }
 
 void	free_map(char **map)
 {
