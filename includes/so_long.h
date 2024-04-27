@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 18:50:53 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/04/25 22:19:54 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/04/27 17:51:30 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	get_player_pos(char **map, t_pos *position);
 void	ft_error(char *str, char **map);
 void	free_map(char **map);
 int32_t	init_game(char *argv, t_game *game);
-void	player_moves(mlx_key_data_t keydata, void *param);
+void	init_move(mlx_key_data_t keydata, void *param);
 
 
 #endif
