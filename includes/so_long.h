@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 18:50:53 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/04/28 19:57:29 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/04/28 20:38:49 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ struct s_game
 	int		col;
 	int		lin;
 	int		end_game;
+	int		steps;
 	t_pos	player_pos;
 	t_map	occ;
 	t_img	*texture;

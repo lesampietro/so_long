@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:47:30 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/04/28 20:09:26 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/04/28 20:41:52 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,16 @@ static void error(void)
 {
 	exit(EXIT_FAILURE);
 }
-// fazer func que conta os coletaveis
-// fazer func que diminui os coletaveis quando passa o gato em cima + checa se tem o collect na posição que vamos nos mover (mesma coisa pra idntificar paredes porem com 'C')
-// com a mesma lógica acima nós vamos identificar a saída e quando terminarem os collects, a saída vira exit
+
 // fazer o contador de passos dados com printf
 // animar o gato (muito importante!!!)
-
-
 //void	mlx_close_hook(mlx_t * mlx, mlx_closefunc func, void *param);
+
+void counter(t_game *game)
+{
+	game->steps++;	
+	ft_printf("Steps: %i\n", game->steps);
+}
 
 void	validate_exit(mlx_key_data_t keydata, t_game *game)
 {
@@ -60,6 +62,7 @@ void	player_moves(t_game *game, int movement)
 		game->player_pos.y++;
 		game->image->player_img->instances[0].y += 64;
 	}
+	counter(game);
 }
 void	validate_collects(t_game *game)
 {
@@ -121,6 +124,8 @@ void	init_move(mlx_key_data_t keydata, void *param)
 		validate_moves(game, BOTTOM);
 	if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS)
 		validate_moves(game, RIGHT);
+	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
+		exit(EXIT_SUCCESS);
 	validate_exit(keydata, game);
 }
 
