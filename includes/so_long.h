@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 18:50:53 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/04/27 17:51:30 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/04/28 19:57:29 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ struct s_map
 {
 	int		player;
 	int		collects;
+	int		defo_collects;
 	int		exit;
 	int		columns;
 	int		lines;
@@ -56,7 +57,9 @@ struct s_game
 	mlx_t	*mlx;
 	int		col;
 	int		lin;
+	int		end_game;
 	t_pos	player_pos;
+	t_map	occ;
 	t_img	*texture;
 	t_img	*image;
 };

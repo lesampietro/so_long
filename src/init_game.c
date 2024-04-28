@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:47:30 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/04/27 17:49:51 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/04/28 20:09:26 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,27 @@ static void error(void)
 {
 	exit(EXIT_FAILURE);
 }
-// fazer funcao que atualiza a posição do player no mapa e anda com a instancia (fazer quebrando a função abaixo em 2)
 // fazer func que conta os coletaveis
 // fazer func que diminui os coletaveis quando passa o gato em cima + checa se tem o collect na posição que vamos nos mover (mesma coisa pra idntificar paredes porem com 'C')
 // com a mesma lógica acima nós vamos identificar a saída e quando terminarem os collects, a saída vira exit
 // fazer o contador de passos dados com printf
 // animar o gato (muito importante!!!)
+
+
+//void	mlx_close_hook(mlx_t * mlx, mlx_closefunc func, void *param);
+
+void	validate_exit(mlx_key_data_t keydata, t_game *game)
+{
+	if(game->occ.defo_collects == 0)
+	{
+		game->image->exit_img->enabled = true;
+		if (game->image->exit_img->instances[0].x == game->image->player_img->instances[0].x 
+		&& game->image->exit_img->instances[0].y == game->image->player_img->instances[0].y)
+			game->end_game = 0;
+	}
+	if (keydata.action == MLX_RELEASE && game->end_game == 0)
+		exit(EXIT_SUCCESS);
+}
 
 void	player_moves(t_game *game, int movement)
 {
@@ -46,22 +61,52 @@ void	player_moves(t_game *game, int movement)
 		game->image->player_img->instances[0].y += 64;
 	}
 }
+void	validate_collects(t_game *game)
+{
+	int	i;
 
-void	move_validation(t_game *game, int movement)
+	i = 0;
+	if (game->map[game->player_pos.y][game->player_pos.x] == 'C' && game->occ.collects > 0)
+	{
+		game->map[game->player_pos.y][game->player_pos.x] = '0';
+		while(i < game->occ.collects)
+		{
+			if (game->image->collects_img->instances[i].x == game->image->player_img->instances[0].x 
+			&& game->image->collects_img->instances[i].y == game->image->player_img->instances[0].y)
+				game->image->collects_img->instances[i].enabled = false;
+			i++;
+		}
+		game->occ.defo_collects--;
+	}
+}
+
+void	validate_moves(t_game *game, int movement)
 {
 	if(movement == TOP)
 		if(game->map[game->player_pos.y - 1][game->player_pos.x] != '1')
+		{
 			player_moves(game, TOP);
+			validate_collects(game);
+		}
 	if (movement == LEFT)
 		if (game->map[game->player_pos.y][game->player_pos.x - 1] != '1')
+		{
 			player_moves(game, LEFT);
+			validate_collects(game);
+		}
 	if(movement == RIGHT)
 		if (game->map[game->player_pos.y][game->player_pos.x + 1] != '1')
+		{
 			player_moves(game, RIGHT);
+			validate_collects(game);
+		}
 	if (movement == BOTTOM)
 		if (game->map[game->player_pos.y + 1][game->player_pos.x] != '1')
+		{	
 			player_moves(game, BOTTOM);
-}	
+			validate_collects(game);
+		}
+}
 
 void	init_move(mlx_key_data_t keydata, void *param)
 {
@@ -69,13 +114,14 @@ void	init_move(mlx_key_data_t keydata, void *param)
 
 	game = (t_game *)param;
 	if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS)
-		move_validation(game, TOP);
+		validate_moves(game, TOP);
 	if (keydata.key == MLX_KEY_A && keydata.action == MLX_PRESS)
-		move_validation(game, LEFT);
+		validate_moves(game, LEFT);
 	if (keydata.key == MLX_KEY_S && keydata.action == MLX_PRESS)
-		move_validation(game, BOTTOM);
+		validate_moves(game, BOTTOM);
 	if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS)
-		move_validation(game, RIGHT);
+		validate_moves(game, RIGHT);
+	validate_exit(keydata, game);
 }
 
 void	put_player(t_game *game)
@@ -125,6 +171,7 @@ void put_collects_n_exit(t_game *game)
 		}
 		line++;
 	}
+	game->image->exit_img->enabled = false;
 }
 
 void	put_floor_n_walls(t_game *game)
@@ -238,7 +285,7 @@ int32_t	init_game(char *argv, t_game *game)
 		error();
 	init_game_image(game);
 	get_player_pos(game->map, &game->player_pos);
-	// ft_printf("%i\n%i\n", game->player_pos.x, game->player_pos.y);
+	occurence_count(game->map, &game->occ);
 	mlx_key_hook(game->mlx, &init_move, game);
 	mlx_loop(game->mlx);
 	delete_images(game);

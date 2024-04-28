@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:39:51 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/04/25 21:51:28 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/04/28 19:58:00 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void init_values(t_game *game)
 	game->image = NULL;
 	game->player_pos.x = 0;
 	game->player_pos.y = 0;
+	game->end_game = 1;
 }
 
 int32_t main(int argc, char **argv)

@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:40:08 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/04/14 20:46:47 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/04/28 19:22:01 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,6 @@ void	occurence_count(char **map, t_map *map_data)
 		}
 		i++;
 	}
+	map_data->defo_collects = map_data->collects;
 	check_chars_count(map, map_data);
 }
