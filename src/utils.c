@@ -6,34 +6,33 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 20:15:23 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/04/25 21:49:34 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/04 19:39:15 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-// void	free_game(t_game *game)
-// {
-	
-// }
-
-void	free_map(char **map)
+void	count_map_size(t_game *game)
 {
-	int i;
+	int l;
+	int c;
 
-	i = 0;
-	while (map[i])
+	l = 0;
+	game->lin = 0;
+	game->col = 0;
+	while (game->map[l])
 	{
-		free(map[i]);
-		i++;
+		c = 0;
+		while (game->map[l][c])
+			c++;
+		l++;
 	}
-	free(map);
+	game->lin = l;
+	game->col = c;
 }
 
-void	ft_error(char *str, char **map)
+void	counter(t_game *game)
 {
-	if(map)
-		free_map(map);
-	ft_printf("%s", str);
-	exit(EXIT_FAILURE) ;
+	game->steps++;
+	ft_printf("Steps: %i\n", game->steps);
 }

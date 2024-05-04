@@ -15,11 +15,14 @@ LIBS= $(LIBMLX)/build/libmlx42.a $(LIBFT)/libft.a
 SRC= so_long.c \
 		read_map.c \
 		validate_map.c \
-		validate_entry.c \
 		validate_chars.c \
 		floodfill.c \
 		utils.c \
 		init_game.c \
+		init_assets.c \
+		init_map.c \
+		validate_moves.c \
+		clean.c \
 
 # BONUS= $(shell find ./bonus -iname ".c")
 SRC:= $(addprefix $(SRC_D),$(SRC))

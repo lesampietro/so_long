@@ -6,17 +6,11 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:39:51 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/04/28 20:39:07 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/04/28 21:01:23 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-// static void error(void)
-// {
-// 	puts(mlx_strerror(mlx_errno));
-// 	exit(EXIT_FAILURE);
-// }
 
 void init_values(t_game *game)
 {
@@ -49,7 +43,3 @@ int32_t main(int argc, char **argv)
 	init_game(argv[1], &game);
 	return (EXIT_SUCCESS);
 }
-
-	// game = malloc(sizeof(t_game *));
-	// if (!game)
-	// 	ft_error("Error.\n", NULL);

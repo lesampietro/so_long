@@ -6,13 +6,13 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 18:27:29 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/04/14 20:46:24 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/04 19:39:07 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int		count_lines(char *map)
+int	count_lines(char *map)
 {
 	int		n;
 	int		fd;
