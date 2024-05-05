@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 18:50:53 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/05 19:43:16 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/05 19:38:03 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@
 typedef struct s_map	t_map;
 typedef struct s_pos	t_pos;
 typedef struct s_img	t_img;
+typedef struct s_anim	t_anim;
 typedef struct s_game	t_game;
 
 enum e_directions {
@@ -89,6 +90,14 @@ struct s_game
 	t_map			occ;
 	mlx_texture_t	*icon;
 	t_img			img;
+};
+
+struct s_anim
+{
+	mlx_texture_t	*p_01;
+	mlx_texture_t	*p_02;
+	mlx_image_t		*p_img_01;
+	mlx_image_t		*p_img_02;
 };
 
 /*Map validation functions*/

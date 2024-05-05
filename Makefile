@@ -6,12 +6,12 @@
 #    By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/04 21:48:42 by lsampiet          #+#    #+#              #
-#    Updated: 2024/05/04 21:49:41 by lsampiet         ###   ########.fr        #
+#    Updated: 2024/05/05 19:49:22 by lsampiet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME= so_long
-# NAME_BONUS= so_long_bonus
+NAME_BONUS= so_long_bonus
 C_FLAGS:= -Wextra -Wall -Werror
 0MLX_FLAGS= -Wunreachable-code
 MLX_FLAGS= -ldl -lglfw -pthread -lm
@@ -36,11 +36,11 @@ SRC= so_long.c \
 		validate_moves.c \
 		clean.c \
 
-# BONUS= $(shell find ./bonus -iname ".c")
+BONUS= $(shell find ./bonus -iname ".c")
 SRC:= $(addprefix $(SRC_D),$(SRC))
 INCLUDES= -I includes -I $(LIBMLX)/include -I $(LIBFT)/ -I $(LIBFT)/ft_printf/includes -I $(LIBFT)/gnl/includes
 OBJS= $(patsubst $(SRC_D)%.c, $(BIN)%.o, $(SRC))
-# BONUS_OBJS= $(BONUS:%.c=%.o)
+BONUS_OBJS= $(BONUS:%.c=%.o)
 
 all: $(NAME)
 	@echo "All done!🥳"

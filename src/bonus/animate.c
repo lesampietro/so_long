@@ -6,11 +6,11 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 22:55:28 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/05 16:06:02 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/05 19:46:20 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../../includes/so_long_bonus.h"
 
 void	timer(void *param)
 {
