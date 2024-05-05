@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:47:30 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/05 16:45:35 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/05 19:24:04 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 
 void	init_game_image(t_game *game)
 {
-	init_tile_textures(game);
+	display_img(game);
 	put_floor_n_walls(game);
 	put_collects_n_exit(game);
-	game->image->exit_img->enabled = false;
+	game->img.exit->enabled = false;
 	put_player(game);
+	display_icon(game);
 }
 
 void	init_window(t_game *game)

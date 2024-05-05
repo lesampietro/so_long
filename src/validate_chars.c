@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:40:08 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/05 15:40:29 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/05 19:20:27 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	check_map_chars(char **map, t_map *map_data)
 		while (map[i][j])
 		{
 			if (!(ft_strchr(VALID_CHARSET, map[i][j])))
-				ft_error("Error.\nMap with invalid characters.n", map);
+				ft_error(ERROR_MAP_CHARS, map);
 			j++;
 		}
 		i++;
@@ -55,11 +55,11 @@ void	check_map_chars(char **map, t_map *map_data)
 void	check_chars_count(char **map, t_map *map_data)
 {
 	if (map_data->player != 1)
-		ft_error("Error.\nInvalid number of players.\n", map);
+		ft_error(ERROR_MAP_P, map);
 	else if (map_data->exit != 1)
-		ft_error("Error.\nInvalid number of exits.\n", map);
+		ft_error(ERROR_MAP_E, map);
 	else if (map_data->collects < 1)
-		ft_error("Error.\nThere are no collectibles on the map.\n", map);
+		ft_error(ERROR_MAP_C, map);
 	return ;
 }
 

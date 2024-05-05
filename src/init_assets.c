@@ -6,57 +6,45 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 19:47:56 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/05 16:32:36 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/05 19:38:47 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	init_tile_images(t_game *game)
+mlx_image_t	*create_img(mlx_t *mlx, char *img_path)
 {
-	game->image = malloc(sizeof(t_img));
-	game->image->floor_img = mlx_texture_to_image(game->mlx, game->texture->floor);
-	game->image->wall_img = mlx_texture_to_image(game->mlx, game->texture->wall);
-	game->image->collects_img = mlx_texture_to_image(game->mlx, game->texture->collects);
-	game->image->exit_img = mlx_texture_to_image(game->mlx, game->texture->exit);
-	game->image->player_img = mlx_texture_to_image(game->mlx, game->texture->player);
-	if ((!(game->image->floor_img)) || (!(game->image->wall_img)) ||
-		(!(game->image->player_img)) || (!(game->image->collects_img)) ||(!(game->image->exit_img)))
-		ft_error(ERROR_ASSET_LOAD, NULL);
+	mlx_texture_t	*texture;
+	mlx_image_t		*img;
+
+	texture = mlx_load_png(img_path);
+	if (!texture)
+		ft_error(ERROR_TEXTURE, NULL);
+	img = mlx_texture_to_image(mlx, texture);
+	if (!img)
+		ft_error(ERROR_IMG, NULL);
+	mlx_delete_texture(texture);
+	return (img);
 }
 
-void	init_tile_textures(t_game *game)
+void	display_img(t_game *game)
 {
-	game->texture = malloc(sizeof(t_img));
-	game->texture->floor = mlx_load_png("./assets/textures/floor-64px.png");
-	game->texture->wall = mlx_load_png("./assets/textures/wall-64px.png");
-	game->texture->collects = mlx_load_png("./assets/textures/collect-64px.png");
-	game->texture->exit = mlx_load_png("./assets/textures/exit-64px.png");
-	game->texture->player = mlx_load_png("./assets/player/pagu-idle-03-64px.png");
-	if ((!(game->texture->floor)) || (!(game->texture->wall)) ||
-		(!(game->texture->player)) || (!(game->texture->collects)) || (!(game->texture->exit)))
-		ft_error(ERROR_ASSET_LOAD, NULL);
-	init_tile_images(game);
-	mlx_set_icon(game->mlx, game->texture->player);
-	delete_textures(game);
+	game->img.floor = create_img(game->mlx, "./assets/tiles/floor.png");
+	game->img.wall = create_img(game->mlx, "./assets/tiles/wall.png");
+	game->img.collects = create_img(game->mlx, "./assets/tiles/collect.png");
+	game->img.exit = create_img(game->mlx, "./assets/tiles/exit.png");
+	game->img.player = create_img(game->mlx, "./assets/player/p-idle-03.png");
+	if ((!(game->img.floor)) || (!(game->img.wall)
+			|| (!(game->img.collects)) || (!(game->img.exit))
+			|| (!(game->img.player))))
+		ft_error(ERROR_IMG, NULL);
 }
 
 void	delete_images(t_game *game)
 {
-	mlx_delete_image(game->mlx, game->image->floor_img);
-	mlx_delete_image(game->mlx, game->image->wall_img);
-	mlx_delete_image(game->mlx, game->image->collects_img);
-	mlx_delete_image(game->mlx, game->image->exit_img);
-	mlx_delete_image(game->mlx, game->image->player_img);
-	free(game->image);
-}
-
-void	delete_textures(t_game *game)
-{
-	mlx_delete_texture(game->texture->floor);
-	mlx_delete_texture(game->texture->wall);
-	mlx_delete_texture(game->texture->collects);
-	mlx_delete_texture(game->texture->exit);
-	mlx_delete_texture(game->texture->player);
-	free(game->texture);
+	mlx_delete_image(game->mlx, game->img.floor);
+	mlx_delete_image(game->mlx, game->img.wall);
+	mlx_delete_image(game->mlx, game->img.collects);
+	mlx_delete_image(game->mlx, game->img.exit);
+	mlx_delete_image(game->mlx, game->img.player);
 }

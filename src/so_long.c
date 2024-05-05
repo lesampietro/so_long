@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:39:51 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/05 16:19:41 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/05 19:16:32 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ void	init_values(t_game *game)
 	game->mlx = NULL;
 	game->col = 0;
 	game->lin = 0;
-	game->texture = NULL;
-	game->image = NULL;
+	game->icon = NULL;
 	game->player_pos.x = 0;
 	game->player_pos.y = 0;
 	game->end_game = 1;

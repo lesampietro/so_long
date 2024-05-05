@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 19:46:54 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/05 16:56:20 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/05 19:24:58 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ void	validate_exit(mlx_key_data_t keydata, t_game *game)
 {
 	if (game->occ.defo_collects == 0)
 	{
-		game->image->exit_img->enabled = true;
-		if (game->image->exit_img->instances[0].x
-			== game->image->player_img->instances[0].x
-			&& game->image->exit_img->instances[0].y
-			== game->image->player_img->instances[0].y)
+		game->img.exit->enabled = true;
+		if (game->img.exit->instances[0].x
+			== game->img.player->instances[0].x
+			&& game->img.exit->instances[0].y
+			== game->img.player->instances[0].y)
 			game->end_game = 0;
 	}
 	if (keydata.action == MLX_RELEASE && game->end_game == 0)
@@ -32,22 +32,22 @@ void	player_moves(t_game *game, int movement)
 	if (movement == TOP)
 	{
 		game->player_pos.y--;
-		game->image->player_img->instances[0].y -= 64;
+		game->img.player->instances[0].y -= 64;
 	}
 	if (movement == LEFT)
 	{
 		game->player_pos.x--;
-		game->image->player_img->instances[0].x -= 64;
+		game->img.player->instances[0].x -= 64;
 	}
 	if (movement == RIGHT)
 	{
 		game->player_pos.x++;
-		game->image->player_img->instances[0].x += 64;
+		game->img.player->instances[0].x += 64;
 	}
 	if (movement == BOTTOM)
 	{
 		game->player_pos.y++;
-		game->image->player_img->instances[0].y += 64;
+		game->img.player->instances[0].y += 64;
 	}
 	counter(game);
 }
@@ -63,11 +63,11 @@ void	validate_collects(t_game *game)
 		game->map[game->player_pos.y][game->player_pos.x] = '0';
 		while (i < game->occ.collects)
 		{
-			if (game->image->collects_img->instances[i].x
-				== game->image->player_img->instances[0].x
-				&& game->image->collects_img->instances[i].y
-				== game->image->player_img->instances[0].y)
-				game->image->collects_img->instances[i].enabled = false;
+			if (game->img.collects->instances[i].x
+				== game->img.player->instances[0].x
+				&& game->img.collects->instances[i].y
+				== game->img.player->instances[0].y)
+				game->img.collects->instances[i].enabled = false;
 			i++;
 		}
 		game->occ.defo_collects--;
