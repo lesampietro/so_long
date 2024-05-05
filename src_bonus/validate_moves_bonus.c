@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_moves.c                                   :+:      :+:    :+:   */
+/*   validate_moves_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 19:46:54 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/05 14:27:12 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/05 14:37:43 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_bonus.h"
 
 void validate_exit(mlx_key_data_t keydata, t_game *game)
 {

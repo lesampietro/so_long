@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 18:50:53 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/05 14:33:02 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/05 14:23:29 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ struct s_game
 	t_map	occ;
 	t_img	*texture;
 	t_img	*image;
+	t_anim	*anim_texture;
+	t_anim	*anim_img;
 };
 
 struct s_img
@@ -78,6 +80,14 @@ struct s_img
 	mlx_image_t		*player_img;
 	mlx_image_t		*collects_img;
 	mlx_image_t		*exit_img;
+};
+
+struct s_anim
+{
+	mlx_texture_t	*player_01;
+	mlx_texture_t	*player_02;
+	mlx_texture_t	*player_01;
+	mlx_texture_t	*player_02;
 };
 
 /*Map validation functions*/
