@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:40:08 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/04/25 22:39:25 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/05 16:23:40 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	flood_path(char **map, int x, int y)
 {
-	if(map[x][y] != '1')
+	if (map[x][y] != '1')
 	{
 		map[x][y] = '1';
 		flood_path(map, x + 1, y);
@@ -26,8 +26,8 @@ void	flood_path(char **map, int x, int y)
 
 void	get_player_pos(char **map, t_pos *position)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (map[i])
@@ -48,8 +48,8 @@ void	get_player_pos(char **map, t_pos *position)
 
 void	check_flood(char **map)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (map[i])
@@ -58,7 +58,7 @@ void	check_flood(char **map)
 		while (map[i][j])
 		{
 			if (ft_strchr("CE", map[i][j]))
-				ft_error("Error.\nThere is at least one unreachable collectible or exit.\n", map);
+				ft_error(ERROR_FLOODFILL, map);
 			j++;
 		}
 		i++;

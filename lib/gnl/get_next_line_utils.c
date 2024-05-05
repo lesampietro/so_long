@@ -6,13 +6,13 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 20:04:26 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/03/27 21:30:19 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/05 15:36:36 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/get_next_line.h"
 
-int	ft_find_newline(g_list *list)
+int	ft_find_newline(t_gnl_list *list)
 {
 	int	i;
 
@@ -32,7 +32,7 @@ int	ft_find_newline(g_list *list)
 	return (0);
 }
 
-g_list	*ft_find_last_node(g_list *list)
+t_gnl_list	*ft_find_last_node(t_gnl_list *list)
 {
 	if (list == NULL)
 		return (NULL);
@@ -41,7 +41,7 @@ g_list	*ft_find_last_node(g_list *list)
 	return (list);
 }
 
-int	ft_line_len(g_list *list)
+int	ft_line_len(t_gnl_list *list)
 {
 	int	len;
 	int	i;
@@ -67,7 +67,7 @@ int	ft_line_len(g_list *list)
 	return (len);
 }
 
-void	*ft_copy_line(g_list *list, char *nxt_str)
+void	*ft_copy_line(t_gnl_list *list, char *nxt_str)
 {
 	int	i;
 	int	n;
@@ -92,9 +92,9 @@ void	*ft_copy_line(g_list *list, char *nxt_str)
 	return (nxt_str);
 }
 
-void	ft_dealloc(g_list **list, g_list *clean_node, char *buffer)
+void	ft_dealloc(t_gnl_list **list, t_gnl_list *clean_node, char *buffer)
 {
-	g_list	*tmp;
+	t_gnl_list	*tmp;
 
 	while (*list != NULL)
 	{

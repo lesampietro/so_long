@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:40:08 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/04/28 19:22:01 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/05 15:40:29 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	newline_off(char **map)
 	int	j;
 
 	i = 0;
-	while(map[i])
+	while (map[i])
 	{
 		j = 0;
 		while (map[i][j])
@@ -28,7 +28,6 @@ void	newline_off(char **map)
 			j++;
 		}
 		i++;
-		
 	}
 }
 
@@ -36,14 +35,14 @@ void	check_map_chars(char **map, t_map *map_data)
 {
 	int	i;
 	int	j;
-	
+
 	i = 0;
-	while(map[i])
+	while (map[i])
 	{
 		j = 0;
-		while(map[i][j])
+		while (map[i][j])
 		{
-			if(!(ft_strchr(VALID_CHARSET, map[i][j])))
+			if (!(ft_strchr(VALID_CHARSET, map[i][j])))
 				ft_error("Error.\nMap with invalid characters.n", map);
 			j++;
 		}
@@ -61,13 +60,13 @@ void	check_chars_count(char **map, t_map *map_data)
 		ft_error("Error.\nInvalid number of exits.\n", map);
 	else if (map_data->collects < 1)
 		ft_error("Error.\nThere are no collectibles on the map.\n", map);
-	return;
+	return ;
 }
 
 void	occurence_count(char **map, t_map *map_data)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	map_data->player = 0;

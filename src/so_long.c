@@ -6,13 +6,13 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:39:51 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/04/28 21:01:23 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/05 16:19:41 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void init_values(t_game *game)
+void	init_values(t_game *game)
 {
 	game->map = NULL;
 	game->mlx = NULL;
@@ -26,16 +26,16 @@ void init_values(t_game *game)
 	game->steps = 0;
 }
 
-int32_t main(int argc, char **argv)
+int32_t	main(int argc, char **argv)
 {
 	char	**new_map;
 	int		i;
 	t_game	game;
 
 	i = 0;
-	init_values(&game);
-	if(argc != 2)
-		ft_error("Error.\nMissing argument.\n", NULL);
+	init_values (&game);
+	if (argc != 2)
+		ft_error(ERROR_ARG, NULL);
 	is_valid_entry(&argv[1]);
 	new_map = read_map(argv[1]);
 	is_valid_map(new_map);

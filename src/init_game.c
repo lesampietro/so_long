@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:47:30 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/04 22:56:00 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/05 16:11:32 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,20 @@ void	init_game_image(t_game *game)
 
 void	init_window(t_game *game)
 {
-	int32_t moni_w;
-	int32_t moni_h;
+	int32_t	moni_w;
+	int32_t	moni_h;
 
 	moni_w = 0;
 	moni_h = 0;
 	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
 	game->mlx = mlx_init((TILE * game->col), (TILE * game->lin), "Pagu", true);
 	if (!game->mlx)
-		ft_error("Error.\nMlx handle instance could not be initialized", NULL);
+		ft_error(ERROR_MLX_LOAD, NULL);
 	mlx_get_monitor_size(0, &moni_w, &moni_h);
 	mlx_set_window_limit(game->mlx, TILE, TILE, moni_w, moni_h);
 	if (game->mlx->width > moni_w || game->mlx->height > moni_h)
 	{
-		ft_error("Error.\nMap is too big.", NULL);
+		ft_error(ERROR_MAP_2BIG, NULL);
 		free_game(game);
 	}
 }
@@ -53,4 +53,3 @@ int32_t	init_game(char *argv, t_game *game)
 	free_game(game);
 	return (EXIT_SUCCESS);
 }
-

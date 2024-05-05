@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 20:15:23 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/04 19:39:15 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/05 15:18:50 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	count_map_size(t_game *game)
 {
-	int l;
-	int c;
+	int	l;
+	int	c;
 
 	l = 0;
 	game->lin = 0;

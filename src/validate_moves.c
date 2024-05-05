@@ -6,13 +6,13 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 19:46:54 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/05 14:27:12 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/05 15:47:35 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void validate_exit(mlx_key_data_t keydata, t_game *game)
+void	validate_exit(mlx_key_data_t keydata, t_game *game)
 {
 	if (game->occ.defo_collects == 0)
 	{
@@ -24,7 +24,7 @@ void validate_exit(mlx_key_data_t keydata, t_game *game)
 		free_game(game);
 }
 
-void player_moves(t_game *game, int movement)
+void	player_moves(t_game *game, int movement)
 {
 	if (movement == TOP)
 	{
@@ -48,9 +48,10 @@ void player_moves(t_game *game, int movement)
 	}
 	counter(game);
 }
-void validate_collects(t_game *game)
+
+void	validate_collects(t_game *game)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (game->map[game->player_pos.y][game->player_pos.x] == 'C' && game->occ.collects > 0)
@@ -58,7 +59,7 @@ void validate_collects(t_game *game)
 		game->map[game->player_pos.y][game->player_pos.x] = '0';
 		while (i < game->occ.collects)
 		{
-			if (game->image->collects_img->instances[i].x == game->image->player_img->instances[0].x 
+			if (game->image->collects_img->instances[i].x == game->image->player_img->instances[0].x
 				&& game->image->collects_img->instances[i].y == game->image->player_img->instances[0].y)
 				game->image->collects_img->instances[i].enabled = false;
 			i++;
@@ -67,48 +68,41 @@ void validate_collects(t_game *game)
 	}
 }
 
-void validate_moves(t_game *game, int movement)
+void	validate_moves(t_game *game, int movement)
 {
 	if (movement == TOP)
 		if (game->map[game->player_pos.y - 1][game->player_pos.x] != '1')
-		{
 			player_moves(game, TOP);
-			validate_collects(game);
-		}
 	if (movement == LEFT)
 		if (game->map[game->player_pos.y][game->player_pos.x - 1] != '1')
-		{
 			player_moves(game, LEFT);
-			validate_collects(game);
-		}
 	if (movement == RIGHT)
 		if (game->map[game->player_pos.y][game->player_pos.x + 1] != '1')
-		{
 			player_moves(game, RIGHT);
-			validate_collects(game);
-		}
 	if (movement == BOTTOM)
 		if (game->map[game->player_pos.y + 1][game->player_pos.x] != '1')
-		{
 			player_moves(game, BOTTOM);
-			validate_collects(game);
-		}
+	validate_collects(game);
 }
 
-void init_move(mlx_key_data_t keydata, void *param)
+void	init_move(mlx_key_data_t keydata, void *param)
 {
-	t_game *game;
+	t_game	*game;
 
 	game = (t_game *)param;
 	if (mlx_is_key_down(game->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(game->mlx);
-	if ((keydata.key == MLX_KEY_W || keydata.key == MLX_KEY_UP) && keydata.action == MLX_PRESS)
+	if (((keydata.key == MLX_KEY_W) || (keydata.key == MLX_KEY_UP))
+		&& keydata.action == MLX_PRESS)
 		validate_moves(game, TOP);
-	if ((keydata.key == MLX_KEY_A || keydata.key == MLX_KEY_LEFT) && keydata.action == MLX_PRESS)
+	if (((keydata.key == MLX_KEY_A) || (keydata.key == MLX_KEY_LEFT))
+		&& keydata.action == MLX_PRESS)
 		validate_moves(game, LEFT);
-	if ((keydata.key == MLX_KEY_S || keydata.key == MLX_KEY_DOWN) && keydata.action == MLX_PRESS)
+	if (((keydata.key == MLX_KEY_S) || (keydata.key == MLX_KEY_DOWN))
+		&& keydata.action == MLX_PRESS)
 		validate_moves(game, BOTTOM);
-	if ((keydata.key == MLX_KEY_D || keydata.key == MLX_KEY_RIGHT) && keydata.action == MLX_PRESS)
+	if (((keydata.key == MLX_KEY_D) || (keydata.key == MLX_KEY_RIGHT))
+		&& keydata.action == MLX_PRESS)
 		validate_moves(game, RIGHT);
-	validate_exit(keydata, game);
+	validate_exit (keydata, game);
 }

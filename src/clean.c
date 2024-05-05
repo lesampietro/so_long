@@ -6,15 +6,15 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 19:04:42 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/04 20:23:18 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/05 15:28:50 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void free_map(char **map)
+void	free_map(char **map)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (map[i])
@@ -25,7 +25,7 @@ void free_map(char **map)
 	free(map);
 }
 
-void ft_error(char *str, char **map)
+void	ft_error(char *str, char **map)
 {
 	if (map)
 		free_map(map);

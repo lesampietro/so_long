@@ -6,13 +6,13 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 20:03:51 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/03/27 21:30:28 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/05 15:50:10 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/get_next_line.h"
 
-char	*ft_get_line(g_list **list)
+char	*ft_get_line(t_gnl_list **list)
 {
 	int		str_len;
 	char	*next_str;
@@ -32,20 +32,20 @@ char	*ft_get_line(g_list **list)
 	return (next_str);
 }
 
-void	ft_tideup_list(g_list **list)
+void	ft_tideup_list(t_gnl_list **list)
 {
-	g_list	*last_node;
-	g_list	*new_node;
-	int		i;
-	int		n;
-	char	*buffer;
+	t_gnl_list	*last_node;
+	t_gnl_list	*new_node;
+	int			i;
+	int			n;
+	char		*buffer;
 
 	i = 0;
 	n = 0;
 	if (*list == NULL)
 		return ;
 	buffer = malloc(BUFFER_SIZE + 1);
-	new_node = malloc(sizeof(g_list));
+	new_node = malloc(sizeof(t_gnl_list));
 	if (buffer == NULL || new_node == NULL)
 		return ;
 	last_node = ft_find_last_node(*list);
@@ -61,15 +61,15 @@ void	ft_tideup_list(g_list **list)
 	ft_dealloc(list, new_node, buffer);
 }
 
-void	ft_add_node(g_list **list, char *buffer)
+void	ft_add_node(t_gnl_list **list, char *buffer)
 {
-	g_list	*new_node;
-	g_list	*last_node;
+	t_gnl_list	*new_node;
+	t_gnl_list	*last_node;
 
 	if (buffer == NULL)
 		return ;
 	last_node = ft_find_last_node(*list);
-	new_node = malloc(sizeof(g_list));
+	new_node = malloc(sizeof(t_gnl_list));
 	if (new_node == NULL)
 		return ;
 	if (last_node == NULL)
@@ -80,7 +80,7 @@ void	ft_add_node(g_list **list, char *buffer)
 	new_node->next = NULL;
 }
 
-void	ft_create_list(g_list **list, int fd)
+void	ft_create_list(t_gnl_list **list, int fd)
 {
 	int		chars_read;
 	char	*buffer;
@@ -103,8 +103,8 @@ void	ft_create_list(g_list **list, int fd)
 
 char	*get_next_line(int fd)
 {
-	static g_list	*list;
-	char			*next_line;
+	static t_gnl_list	*list;
+	char				*next_line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 	{

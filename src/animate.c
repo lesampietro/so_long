@@ -6,36 +6,29 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 22:55:28 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/05 14:38:15 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/05 16:06:02 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long_bonus.h"
+#include "../includes/so_long.h"
 
 void	timer(void *param)
 {
-	// static int	i;
-	int32_t		time;
-	t_game		*game;
+	int32_t	time;
+	t_game	*game;
 
-	// i = 0;
 	time = (int)(mlx_get_time() * 10);
 	game = (t_game *)param;
-	// while (i <= time)
-	// {
-		
-	// 	i++;	
-	// }
 	animate_player(game, time);
 }
 
-void init_anim_images(t_game *game)
+void	init_anim_images(t_game *game)
 {
 	game->image = malloc(sizeof(t_img));
 	game->anim_img->player_01 = mlx_texture_to_image(game->mlx, game->anim_texture->player_01);
 	game->anim_img->player_02 = mlx_texture_to_image(game->mlx, game->anim_texture->player_02);
 	if ((!(game->anim_img->player_01)) || (!(game->anim_img->player_02)))
-		ft_error("Error.\nImage could not be loaded", NULL);
+		ft_error(ERROR_ASSET_LOAD, NULL);
 }
 
 void	init_anim_textures(t_game *game)
@@ -44,7 +37,7 @@ void	init_anim_textures(t_game *game)
 	game->anim_texture->player_01 = mlx_load_png("./assets/player/pagu-idle-01-64px.png");
 	game->anim_texture->player_02 = mlx_load_png("./assets/player/pagu-idle-01-64px.png");
 	if ((!(game->anim_texture->player_01)) || (!(game->anim_texture->player_02)))
-		ft_error("Error.\nTextures could not be loaded", NULL);
+		ft_error(ERROR_ASSET_LOAD, NULL);
 	init_anim_images(game);
 	delete_textures(game);
 }
