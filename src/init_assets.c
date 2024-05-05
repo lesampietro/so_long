@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_textures.c                                    :+:      :+:    :+:   */
+/*   init_assets.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 19:47:56 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/04 19:56:51 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/04 22:12:00 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void init_tile_textures(t_game *game)
 	if ((!(game->texture->floor)) || (!(game->texture->wall)) || (!(game->texture->player)) || (!(game->texture->collects)) || (!(game->texture->collects)) || (!(game->texture->exit)))
 		ft_error("Error.\nTextures could not be loaded", NULL);
 	init_tile_images(game);
+	mlx_set_icon(game->mlx, game->texture->player);
 	delete_textures(game);
 }
 

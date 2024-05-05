@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 18:50:53 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/04 19:55:35 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/04 22:49:44 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ void	floodfill(char **map, t_map *map_data);
 
 /*Game Initialization functions*/
 int32_t	init_game(char *argv, t_game *game);
+void	init_window(t_game *game);
 void	init_values(t_game *game);
 void	get_player_pos(char **map, t_pos *position);
 

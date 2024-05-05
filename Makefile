@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/05/04 21:48:42 by lsampiet          #+#    #+#              #
+#    Updated: 2024/05/04 21:49:41 by lsampiet         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME= so_long
 # NAME_BONUS= so_long_bonus
 C_FLAGS:= -Wextra -Wall -Werror
@@ -64,7 +76,6 @@ clean:
 fclean: clean
 	@echo "Cleaning libft.a..."
 	@make clean -C $(LIBFT) --no-print-directory
-# Por que precisa repetir a linha acima (já está no clean)?
 	@echo "Cleaning executables..."
 	@rm -rf $(NAME)
 	@echo "All done!✨"

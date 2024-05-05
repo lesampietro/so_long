@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 19:04:42 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/04 20:01:04 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/04 20:23:18 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,8 @@ void ft_error(char *str, char **map)
 
 void	free_game(t_game *game)
 {
-	
+	free_map(game->map);
+	delete_images(game);
+	mlx_terminate(game->mlx);
+	exit(EXIT_SUCCESS);
 }
