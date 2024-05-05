@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 19:46:54 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/05 15:47:35 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/05 16:56:20 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ void	validate_exit(mlx_key_data_t keydata, t_game *game)
 	if (game->occ.defo_collects == 0)
 	{
 		game->image->exit_img->enabled = true;
-		if (game->image->exit_img->instances[0].x == game->image->player_img->instances[0].x && game->image->exit_img->instances[0].y == game->image->player_img->instances[0].y)
+		if (game->image->exit_img->instances[0].x
+			== game->image->player_img->instances[0].x
+			&& game->image->exit_img->instances[0].y
+			== game->image->player_img->instances[0].y)
 			game->end_game = 0;
 	}
 	if (keydata.action == MLX_RELEASE && game->end_game == 0)
@@ -54,13 +57,16 @@ void	validate_collects(t_game *game)
 	int	i;
 
 	i = 0;
-	if (game->map[game->player_pos.y][game->player_pos.x] == 'C' && game->occ.collects > 0)
+	if (game->map[game->player_pos.y][game->player_pos.x]
+		== 'C' && game->occ.collects > 0)
 	{
 		game->map[game->player_pos.y][game->player_pos.x] = '0';
 		while (i < game->occ.collects)
 		{
-			if (game->image->collects_img->instances[i].x == game->image->player_img->instances[0].x
-				&& game->image->collects_img->instances[i].y == game->image->player_img->instances[0].y)
+			if (game->image->collects_img->instances[i].x
+				== game->image->player_img->instances[0].x
+				&& game->image->collects_img->instances[i].y
+				== game->image->player_img->instances[0].y)
 				game->image->collects_img->instances[i].enabled = false;
 			i++;
 		}

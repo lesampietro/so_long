@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 19:47:56 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/05 16:12:30 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/05 16:32:36 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	init_tile_images(t_game *game)
 	game->image->collects_img = mlx_texture_to_image(game->mlx, game->texture->collects);
 	game->image->exit_img = mlx_texture_to_image(game->mlx, game->texture->exit);
 	game->image->player_img = mlx_texture_to_image(game->mlx, game->texture->player);
-	if ((!(game->image->floor_img)) || (!(game->image->wall_img)) || (!(game->image->player_img)) || (!(game->image->collects_img)) || (!(game->image->exit_img)))
+	if ((!(game->image->floor_img)) || (!(game->image->wall_img)) ||
+		(!(game->image->player_img)) || (!(game->image->collects_img)) ||(!(game->image->exit_img)))
 		ft_error(ERROR_ASSET_LOAD, NULL);
 }
 
@@ -32,7 +33,8 @@ void	init_tile_textures(t_game *game)
 	game->texture->collects = mlx_load_png("./assets/textures/collect-64px.png");
 	game->texture->exit = mlx_load_png("./assets/textures/exit-64px.png");
 	game->texture->player = mlx_load_png("./assets/player/pagu-idle-03-64px.png");
-	if ((!(game->texture->floor)) || (!(game->texture->wall)) || (!(game->texture->player)) || (!(game->texture->collects)) || (!(game->texture->collects)) || (!(game->texture->exit)))
+	if ((!(game->texture->floor)) || (!(game->texture->wall)) ||
+		(!(game->texture->player)) || (!(game->texture->collects)) || (!(game->texture->exit)))
 		ft_error(ERROR_ASSET_LOAD, NULL);
 	init_tile_images(game);
 	mlx_set_icon(game->mlx, game->texture->player);

@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 18:50:53 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/05 16:23:15 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/05 16:34:14 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define ERROR_ASSET_LOAD "Error.\nAssets could not be loaded.\n"
 # define ERROR_ASSET_DISPLAY "Error.\nAssets could not be displayed.\n"
 # define ERROR_EMPTY_MAP "Error.\nMap is empty or doesn't exist.\n"
-# define ERROR_FLOODFILL "Error.\nThere is at least one unreachable collectible or exit.\n"
+# define ERROR_FLOODFILL "Error.\nUnreachable collectible or exit.\n"
 # define ERROR_MAP_DISPLAY "Error.\nMap image could not be displayed.\n"
 # define ERROR_MAP_SHAPE "Error.\nMap is not rectangular.\n"
 # define ERROR_MAP_SIZE "Error.\nMap size is invalid.\n"

@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:40:08 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/05 16:22:35 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/05 16:50:58 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ void	check_map_walls(char **map, t_map *map_data)
 	int	j;
 
 	i = 0;
-	j = 0;
 	while (map[i])
 	{
 		j = 0;
@@ -69,7 +68,8 @@ void	check_map_walls(char **map, t_map *map_data)
 		{
 			if (!(ft_strchr("1", map[i][j])) && i == 0)
 				ft_error(ERROR_MAP_WALLS, map);
-			if (!(ft_strchr("1", map[i][j])) && ((j == 0) || (j == (map_data->columns) - 1)))
+			if (!(ft_strchr("1", map[i][j])) && ((j == 0)
+				|| (j == (map_data->columns) - 1)))
 				ft_error(ERROR_MAP_WALLS, map);
 			j++;
 		}
