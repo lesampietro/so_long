@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   floodfill.c                                        :+:      :+:    :+:   */
+/*   floodfill_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:40:08 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/05 19:46:38 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/06 23:54:19 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long_bonus.h"
+#include "../includes/so_long_bonus.h"
 
 void	flood_path(char **map, int x, int y)
 {
@@ -58,7 +58,7 @@ void	check_flood(char **map)
 		while (map[i][j])
 		{
 			if (ft_strchr("CE", map[i][j]))
-				ft_error(ERROR_FLOODFILL, map);
+				ft_error(ERROR_FLOODFILL_B, map);
 			j++;
 		}
 		i++;

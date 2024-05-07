@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_map.c                                         :+:      :+:    :+:   */
+/*   init_map_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 19:40:59 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/05 19:46:47 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/06 23:54:55 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long_bonus.h"
+#include "../includes/so_long_bonus.h"
 
 void	put_player(t_game *game)
 {
@@ -27,7 +27,7 @@ void	put_player(t_game *game)
 			{
 				if (mlx_image_to_window(game->mlx,
 						game->img.player, col * TILE, line * TILE) < 0)
-					ft_error(ERROR_ASSET_DISPLAY, NULL);
+					ft_error(ERROR_ASSET_DISPLAY_B, NULL);
 			}
 			col++;
 		}
@@ -50,13 +50,13 @@ void	put_collects_n_exit(t_game *game)
 			{
 				if (mlx_image_to_window(game->mlx,
 						game->img.collects, col * TILE, line * TILE) < 0)
-					ft_error(ERROR_MAP_DISPLAY, NULL);
+					ft_error(ERROR_MAP_DISPLAY_B, NULL);
 			}
 			else if (game->map[line][col] == 'E')
 			{
 				if (mlx_image_to_window(game->mlx,
 						game->img.exit, col * TILE, line * TILE) < 0)
-					ft_error(ERROR_MAP_DISPLAY, NULL);
+					ft_error(ERROR_MAP_DISPLAY_B, NULL);
 			}
 			col++;
 		}
@@ -79,13 +79,13 @@ void	put_floor_n_walls(t_game *game)
 			{
 				if (mlx_image_to_window(game->mlx,
 						game->img.floor, col * TILE, line * TILE) < 0)
-					ft_error(ERROR_MAP_DISPLAY, NULL);
+					ft_error(ERROR_MAP_DISPLAY_B, NULL);
 			}
 			else if (game->map[line][col] == '1')
 			{
 				if (mlx_image_to_window(game->mlx,
 						game->img.wall, col * TILE, line * TILE) < 0)
-					ft_error(ERROR_MAP_DISPLAY, NULL);
+					ft_error(ERROR_MAP_DISPLAY_B, NULL);
 			}
 			col++;
 		}

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 18:50:53 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/05 19:38:03 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/06 22:22:58 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,23 @@
 # define VALID_CHARSET "01PCE\n"
 # define TILE 64
 
-# define ERROR_ARG "Error.\nMissing argument.\n"
-# define ERROR_EXT "Error.\nInvalid map file extension.\n"
-# define ERROR_EMPTY_MAP "Error.\nMap is empty or doesn't exist.\n"
-# define ERROR_FLOODFILL "Error.\nUnreachable collectible or exit.\n"
-# define ERROR_MAP_DISPLAY "Error.\nMap image could not be displayed.\n"
-# define ERROR_MAP_SHAPE "Error.\nMap is not rectangular.\n"
-# define ERROR_MAP_SIZE "Error.\nMap size is invalid.\n"
-# define ERROR_MAP_WALLS "Error.\nMap is not closed by walls.\n"
-# define ERROR_MAP_2BIG "Error.\nMap is too big.\n"
-# define ERROR_MLX_LOAD "Error.\nMlx handle instance could not be initialized.\n"
-# define ERROR_MAP_P "Error.\nInvalid number of players.\n"
-# define ERROR_MAP_E "Error.\nInvalid number of exits.\n"
-# define ERROR_MAP_C "Error.\nThere are no collectibles on the map.\n"
-# define ERROR_MAP_CHARS "Error.\nMap with invalid characters.n"
-# define ERROR_TEXTURE "Error.\nTexture could not be loaded.\n"
-# define ERROR_IMG "Error.\nImage could not be created.\n"
-# define ERROR_ASSET_DISPLAY "Error.\nAssets could not be displayed.\n"
+# define ERROR_ARG_B "Error.\nMissing argument.\n"
+# define ERROR_EXT_B "Error.\nInvalid map file extension.\n"
+# define ERROR_EMPTY_MAP_B "Error.\nMap is empty or doesn't exist.\n"
+# define ERROR_FLOODFILL_B "Error.\nUnreachable collectible or exit.\n"
+# define ERROR_MAP_DISPLAY_B "Error.\nMap image could not be displayed.\n"
+# define ERROR_MAP_SHAPE_B "Error.\nMap is not rectangular.\n"
+# define ERROR_MAP_SIZE_B "Error.\nMap size is invalid.\n"
+# define ERROR_MAP_WALLS_B "Error.\nMap is not closed by walls.\n"
+# define ERROR_MAP_2BIG_B "Error.\nMap is too big.\n"
+# define ERROR_MLX_LOAD_B "Error.\nMlx handle instance could not be initialized.\n"
+# define ERROR_MAP_P_B "Error.\nInvalid number of players.\n"
+# define ERROR_MAP_E_B "Error.\nInvalid number of exits.\n"
+# define ERROR_MAP_C_B "Error.\nThere are no collectibles on the map.\n"
+# define ERROR_MAP_CHARS_B "Error.\nMap with invalid characters.n"
+# define ERROR_TEXTURE_B "Error.\nTexture could not be loaded.\n"
+# define ERROR_IMG_B "Error.\nImage could not be created.\n"
+# define ERROR_ASSET_DISPLAY_B "Error.\nAssets could not be displayed.\n"
 
 # include <stdlib.h>
 # include "../lib/MLX42/include/MLX42/MLX42.h"

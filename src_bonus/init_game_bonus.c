@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_game.c                                        :+:      :+:    :+:   */
+/*   init_game_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:47:30 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/05 19:46:44 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/06 23:54:41 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long_bonus.h"
+#include "../includes/so_long_bonus.h"
 
 void	init_game_image(t_game *game)
 {
@@ -32,12 +32,12 @@ void	init_window(t_game *game)
 	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
 	game->mlx = mlx_init((TILE * game->col), (TILE * game->lin), "Pagu", true);
 	if (!game->mlx)
-		ft_error(ERROR_MLX_LOAD, NULL);
+		ft_error(ERROR_MLX_LOAD_B, NULL);
 	mlx_get_monitor_size(0, &moni_w, &moni_h);
 	mlx_set_window_limit(game->mlx, TILE, TILE, moni_w, moni_h);
 	if (game->mlx->width > moni_w || game->mlx->height > moni_h)
 	{
-		ft_error(ERROR_MAP_2BIG, NULL);
+		ft_error(ERROR_MAP_2BIG_B, NULL);
 		free_game(game);
 	}
 }

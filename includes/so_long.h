@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 18:50:53 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/05 19:43:16 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/06 22:40:58 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,8 @@ struct s_game
 	int				steps;
 	t_pos			player_pos;
 	t_map			occ;
-	mlx_texture_t	*icon;
 	t_img			img;
+	mlx_texture_t	*icon;
 };
 
 /*Map validation functions*/
