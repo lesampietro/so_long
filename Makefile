@@ -6,7 +6,7 @@
 #    By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/04 21:48:42 by lsampiet          #+#    #+#              #
-#    Updated: 2024/05/07 00:08:41 by lsampiet         ###   ########.fr        #
+#    Updated: 2024/05/11 17:48:02 by lsampiet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,8 +52,8 @@ BONUS= main_bonus.c \
 		validate_moves_bonus.c \
 		animate.c \
 
-CHECK_M= $(shell ar -t $(NAME) $(C_OBJS) 2>/dev/null)
-CHECK_B= $(shell ar -t $(NAME) $(BONUS_OBJS) 2>/dev/null)
+CHECK_M= $(shell ar -t $(NAME) $(BIN) 2>/dev/null)
+CHECK_B= $(shell ar -t $(NAME_BONUS) $(BIN_BONUS) 2>/dev/null)
 
 SRC:= $(addprefix $(SRC_D),$(SRC))
 BONUS:= $(addprefix $(SRC_B),$(BONUS))
@@ -63,52 +63,52 @@ C_OBJS= $(patsubst $(SRC_D)%.c, $(BIN)%.o, $(SRC))
 BONUS_OBJS= $(patsubst $(SRC_B)%.c, $(BIN_BONUS)%.o, $(BONUS))
 
 all: $(NAME)
-	@echo "All done for mandatory part!🥳"
+	echo "All done for mandatory part!🥳"
 
 bonus: $(NAME_BONUS)
-	@echo "All done for bonus part!🥳"
+	echo "All done for bonus part!🥳"
 
 libmlx:
-	@echo "Compiling graphic libraries..."
-	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4 --no-print-directory
+	echo "Compiling graphic libraries..."
+	cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4 --no-print-directory
 
 libft:
-	@echo "Compiling LIBFT..."
-	@make all bonus new -C $(LIBFT) $(C_FLAGS) --no-print-directory
+	echo "Compiling LIBFT..."
+	make all bonus new -C $(LIBFT) $(C_FLAGS) --no-print-directory
 
 $(BIN)%.o: $(SRC_D)%.c $(HEADER_M)
-	@mkdir -p $(BIN)
-	@$(CC) $(C_FLAGS) $(0MLX_FLAGS) -o $@ -c $< && echo "Compiling: $(notdir $<)"
+	mkdir -p $(BIN)
+	$(CC) $(C_FLAGS) $(0MLX_FLAGS) -o $@ -c $< && echo "Compiling: $(notdir $<)"
 
 $(BIN_BONUS)%.o: $(SRC_B)%.c $(HEADER_B)
-	@mkdir -p $(BIN_BONUS)
-	@$(CC) $(C_FLAGS) $(0MLX_FLAGS) -o $@ -c $< && echo "Compiling: $(notdir $<)"
+	mkdir -p $(BIN_BONUS)
+	$(CC) $(C_FLAGS) $(0MLX_FLAGS) -o $@ -c $< && echo "Compiling: $(notdir $<)"
 
-$(NAME): libmlx libft $(if $(CHECK_B), fclean $(C_OBJS), $(C_OBJS))
-	@echo "Creating $(NAME)"
-	@$(CC) $(C_OBJS) $(LIBS) $(INCLUDES) -o $(NAME) $(MLX_FLAGS)
+$(NAME): $(if $(CHECK_B), fclean $(NAME_BONUS)) $(C_OBJS) libmlx libft
+	echo "Creating $(NAME)"
+	$(CC) $(C_OBJS) $(LIBS) $(INCLUDES) -o $(NAME) $(MLX_FLAGS)
 
-$(NAME_BONUS): libmlx libft $(if $(CHECK_M), fclean $(BONUS_OBJS), $(BONUS_OBJS))
-	@echo "Creating $(NAME_BONUS)"
-	@$(CC) $(BONUS_OBJS) $(LIBS) $(INCLUDES) -o $(NAME_BONUS) $(MLX_FLAGS)
+$(NAME_BONUS): $(if $(CHECK_M), fclean $(NAME)) $(BONUS_OBJS) libmlx libft
+	echo "Creating $(NAME_BONUS)"
+	$(CC) $(BONUS_OBJS) $(LIBS) $(INCLUDES) -o $(NAME_BONUS) $(MLX_FLAGS)
 
 clean:
-	@echo "Cleaning objects..."
-	@rm -rf $(BIN) $(BIN_BONUS)
-	@make clean -C $(LIBFT) --no-print-directory
-	@echo "Cleaning build..."
-	@rm -rf $(LIBMLX)/build
-	@echo "All done!✨"
+	echo "Cleaning objects..."
+	rm -rf $(BIN) $(BIN_BONUS)
+	make fclean -C $(LIBFT) --no-print-directory
+	echo "Cleaning build..."
+	rm -rf $(LIBMLX)/build
+	echo "All done!✨"
 
 fclean: clean
-	@echo "Cleaning libft.a..."
-	@make clean -C $(LIBFT) --no-print-directory
-	@echo "Cleaning executables..."
-	@rm -rf $(NAME) $(NAME_BONUS)
-	@echo "All done!✨"
+	echo "Cleaning libft.a..."
+	make clean $(LIBFT) --no-print-directory
+	echo "Cleaning executables..."
+	rm -rf $(NAME) $(NAME_BONUS)
+	echo "All done!✨"
 
 re: fclean all
 
-.PHONY: all, clean, fclean, re, libmlx
+.PHONY: all, clean, fclean, re, libmlx, libft, bonus
 
 .SILENT:

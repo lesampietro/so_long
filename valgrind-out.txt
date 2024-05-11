@@ -1,0 +1,7 @@
+==29570== Memcheck, a memory error detector
+==29570== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==29570== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==29570== Command: ./so_long maps/valid_square_map.ber
+==29570== Parent PID: 22801
+==29570== 
+==29570== FATAL: can't open suppressions file ".suppress_mlx_error.sup"

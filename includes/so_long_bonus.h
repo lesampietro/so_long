@@ -6,12 +6,12 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 18:50:53 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/06 22:22:58 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/11 16:44:26 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 # define VALID_CHARSET "01PCE\n"
 # define TILE 64
 
@@ -24,7 +24,7 @@
 # define ERROR_MAP_SIZE_B "Error.\nMap size is invalid.\n"
 # define ERROR_MAP_WALLS_B "Error.\nMap is not closed by walls.\n"
 # define ERROR_MAP_2BIG_B "Error.\nMap is too big.\n"
-# define ERROR_MLX_LOAD_B "Error.\nMlx handle instance could not be initialized.\n"
+# define ERROR_MLX_LOAD_B "Error.\nCould not initialize MLX handle instance.\n"
 # define ERROR_MAP_P_B "Error.\nInvalid number of players.\n"
 # define ERROR_MAP_E_B "Error.\nInvalid number of exits.\n"
 # define ERROR_MAP_C_B "Error.\nThere are no collectibles on the map.\n"

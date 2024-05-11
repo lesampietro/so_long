@@ -3,7 +3,6 @@
 # MAKEFILE:
 # - adicionar as regras de bonus:
 #   regra que adiciona o executável do bonus, substituindo o executavel do mandatorio (pegar do make da gnl, acho)
-#   regra que faz com que os .o do bonus caiam dentro da pasta BIN
 
 # # MANDATORIO:
 # - norminette:
