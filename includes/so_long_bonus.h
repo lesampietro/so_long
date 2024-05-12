@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 18:50:53 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/11 22:16:26 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/12 03:22:43 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,10 @@
 # include "../lib/ft_printf/includes/ft_printf.h"
 # include "../lib/libft/libft.h"
 
-typedef struct s_map		t_map;
-typedef struct s_pos		t_pos;
-typedef struct s_img		t_img;
-typedef struct s_animation	t_anim;
-typedef struct s_game		t_game;
+typedef struct s_map	t_map;
+typedef struct s_pos	t_pos;
+typedef struct s_img	t_img;
+typedef struct s_game	t_game;
 
 enum e_directions {
 	RIGHT,
@@ -71,14 +70,18 @@ struct s_map
 
 struct s_img
 {
-	mlx_image_t		*wall;
-	mlx_image_t		*floor;
-	mlx_image_t		*collects;
-	mlx_image_t		*exit;
-	mlx_image_t		*player_00;
-	mlx_image_t		*player_01;
-	mlx_image_t		*player_02;
-	mlx_image_t		*player_03;
+	mlx_image_t	*wall;
+	mlx_image_t	*floor;
+	mlx_image_t	*collects;
+	mlx_image_t	*exit;
+	mlx_image_t	*p_r0;
+	mlx_image_t	*p_r1;
+	mlx_image_t	*p_r2;
+	mlx_image_t	*p_r3;
+	mlx_image_t	*p_l0;
+	mlx_image_t	*p_l1;
+	mlx_image_t	*p_l2;
+	mlx_image_t	*p_l3;
 };
 
 struct s_game
@@ -89,6 +92,7 @@ struct s_game
 	int				lin;
 	int				end_game;
 	int				steps;
+	int				player_side;
 	t_pos			player_pos;
 	t_map			occ;
 	mlx_texture_t	*icon;
@@ -138,10 +142,12 @@ void		put_player_frames(t_game *game, int col, int line);
 void		timer(void *param);
 void		init_anim_images(t_game *game);
 void		anim_images_off(t_game *game);
-void		animate_player(t_game *game);
+void		check_side(t_game *game);
+void		animate_player_right(t_game *game);
+void		animate_player_left(t_game *game);
 
-/*Cleaning & error functions*/
-void		delete_images(t_game *game);
+	/*Cleaning & error functions*/
+	void delete_images(t_game *game);
 void		delete_textures(t_game *game);
 void		free_map(char **map);
 void		free_game(t_game *game);

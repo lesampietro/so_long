@@ -6,7 +6,7 @@
 #    By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/04 21:48:42 by lsampiet          #+#    #+#              #
-#    Updated: 2024/05/11 17:56:01 by lsampiet         ###   ########.fr        #
+#    Updated: 2024/05/12 02:54:16 by lsampiet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ BONUS= main_bonus.c \
 		validate_map_bonus.c \
 		validate_moves_bonus.c \
 		animate.c \
+		player_moves.c \
 
 CHECK_M= $(shell ar -t $(NAME) $(BIN) 2>/dev/null)
 CHECK_B= $(shell ar -t $(NAME_BONUS) $(BIN_BONUS) 2>/dev/null)

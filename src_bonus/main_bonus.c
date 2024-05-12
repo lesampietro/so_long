@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_bonus.c                                    :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:39:51 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/06 23:55:16 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/12 03:12:16 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	init_values(t_game *game)
 	game->col = 0;
 	game->lin = 0;
 	game->icon = NULL;
+	game->player_side = RIGHT;
 	game->player_pos.x = 0;
 	game->player_pos.y = 0;
 	game->end_game = 1;

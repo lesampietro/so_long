@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 19:46:54 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/11 21:38:35 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/12 03:21:58 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,54 +18,13 @@ void	validate_exit(mlx_key_data_t keydata, t_game *game)
 	{
 		game->img.exit->enabled = true;
 		if (game->img.exit->instances[0].x
-			== game->img.player_00->instances[0].x
+			== game->img.p_r0->instances[0].x
 			&& game->img.exit->instances[0].y
-			== game->img.player_00->instances[0].y)
+			== game->img.p_r0->instances[0].y)
 			game->end_game = 0;
 	}
 	if (keydata.action == MLX_RELEASE && game->end_game == 0)
 		free_game(game);
-}
-
-void	update_frame_pos(t_game *game, int x, int y)
-{
-	game->img.player_00->instances[0].x = x;
-	game->img.player_00->instances[0].y = y;
-	game->img.player_01->instances[0].x = x;
-	game->img.player_01->instances[0].y = y;
-	game->img.player_02->instances[0].x = x;
-	game->img.player_02->instances[0].y = y;
-	game->img.player_03->instances[0].x = x;
-	game->img.player_03->instances[0].y = y;
-}
-
-void	player_moves(t_game *game, int movement)
-{
-	if (movement == TOP)
-	{
-		update_frame_pos(game, game->img.player_00->instances[0].x,
-			game->img.player_00->instances[0].y - 64);
-		game->player_pos.y--;
-	}
-	if (movement == LEFT)
-	{
-		update_frame_pos(game, game->img.player_00->instances[0].x - 64,
-						 game->img.player_00->instances[0].y);
-		game->player_pos.x--;
-	}
-	if (movement == RIGHT)
-	{
-		update_frame_pos(game, game->img.player_00->instances[0].x + 64,
-						 game->img.player_00->instances[0].y);
-		game->player_pos.x++;
-	}
-	if (movement == BOTTOM)
-	{
-		update_frame_pos(game, game->img.player_00->instances[0].x,
-						 game->img.player_00->instances[0].y + 64);
-		game->player_pos.y++;
-	}
-	counter(game);
 }
 
 void	validate_collects(t_game *game)
@@ -80,9 +39,9 @@ void	validate_collects(t_game *game)
 		while (i < game->occ.collects)
 		{
 			if (game->img.collects->instances[i].x
-				== game->img.player_00->instances[0].x
+				== game->img.p_r0->instances[0].x
 				&& game->img.collects->instances[i].y
-				== game->img.player_00->instances[0].y)
+				== game->img.p_r0->instances[0].y)
 				game->img.collects->instances[i].enabled = false;
 			i++;
 		}
@@ -96,11 +55,21 @@ void	validate_moves(t_game *game, int movement)
 		if (game->map[game->player_pos.y - 1][game->player_pos.x] != '1')
 			player_moves(game, TOP);
 	if (movement == LEFT)
+	{
 		if (game->map[game->player_pos.y][game->player_pos.x - 1] != '1')
+		{
+			game->player_side = LEFT;
 			player_moves(game, LEFT);
+		}
+	}
 	if (movement == RIGHT)
+	{
 		if (game->map[game->player_pos.y][game->player_pos.x + 1] != '1')
+		{
+			game->player_side = RIGHT;
 			player_moves(game, RIGHT);
+		}
+	}
 	if (movement == BOTTOM)
 		if (game->map[game->player_pos.y + 1][game->player_pos.x] != '1')
 			player_moves(game, BOTTOM);

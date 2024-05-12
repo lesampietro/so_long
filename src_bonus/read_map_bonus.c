@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 18:27:29 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/06 23:55:08 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/12 02:59:56 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,11 @@ int	count_lines(char *map)
 	n = 0;
 	fd = open(map, O_RDONLY);
 	read_map = NULL;
-	while ((read_map = get_next_line(fd)))
+	while (1)
 	{
+		read_map = get_next_line(fd);
+		if (!read_map)
+			break ;
 		free(read_map);
 		n++;
 	}
@@ -46,8 +49,11 @@ char	**read_map(char *map)
 	new_map = malloc(sizeof(char *) * (n_lines + 1));
 	new_map[n_lines] = NULL;
 	fd = open(map, O_RDONLY);
-	while ((n_lines >= 0) && (tmp_map = get_next_line(fd)))
+	while (1)
 	{
+		tmp_map = get_next_line(fd);
+		if (!tmp_map)
+			break ;
 		new_map[i] = tmp_map;
 		i++;
 	}
