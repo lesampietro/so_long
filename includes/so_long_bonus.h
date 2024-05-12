@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 18:50:53 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/11 16:44:26 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/11 22:16:26 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@
 # include "../lib/ft_printf/includes/ft_printf.h"
 # include "../lib/libft/libft.h"
 
-typedef struct s_map	t_map;
-typedef struct s_pos	t_pos;
-typedef struct s_img	t_img;
-typedef struct s_anim	t_anim;
-typedef struct s_game	t_game;
+typedef struct s_map		t_map;
+typedef struct s_pos		t_pos;
+typedef struct s_img		t_img;
+typedef struct s_animation	t_anim;
+typedef struct s_game		t_game;
 
 enum e_directions {
 	RIGHT,
@@ -73,9 +73,12 @@ struct s_img
 {
 	mlx_image_t		*wall;
 	mlx_image_t		*floor;
-	mlx_image_t		*player;
 	mlx_image_t		*collects;
 	mlx_image_t		*exit;
+	mlx_image_t		*player_00;
+	mlx_image_t		*player_01;
+	mlx_image_t		*player_02;
+	mlx_image_t		*player_03;
 };
 
 struct s_game
@@ -90,14 +93,6 @@ struct s_game
 	t_map			occ;
 	mlx_texture_t	*icon;
 	t_img			img;
-};
-
-struct s_anim
-{
-	mlx_texture_t	*p_01;
-	mlx_texture_t	*p_02;
-	mlx_image_t		*p_img_01;
-	mlx_image_t		*p_img_02;
 };
 
 /*Map validation functions*/
@@ -137,6 +132,13 @@ void		validate_collects(t_game *game);
 void		validate_moves(t_game *game, int movement);
 void		validate_exit(mlx_key_data_t keydata, t_game *game);
 void		counter(t_game *game);
+
+/*Animation functions*/
+void		put_player_frames(t_game *game, int col, int line);
+void		timer(void *param);
+void		init_anim_images(t_game *game);
+void		anim_images_off(t_game *game);
+void		animate_player(t_game *game);
 
 /*Cleaning & error functions*/
 void		delete_images(t_game *game);

@@ -6,52 +6,64 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 22:55:28 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/06 23:53:59 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/11 21:32:56 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
 
-// void	timer(void *param)
-// {
-// 	int32_t	time;
-// 	t_game	*game;
+void	timer(void *param)
+{
+	int32_t		time;
+	t_game		*game;
+	static int	counter;
 
-// 	time = (int)(mlx_get_time() * 10);
-// 	game = (t_game *)param;
-// 	animate_player(game, time);
-// }
+	time = (int)(mlx_get_time() * 10);
+	game = (t_game *)param;
+	if (time % 2 == 0)
+	{
+		counter++;
+		if (counter == 8)
+		{
+			counter = 0;
+			animate_player(game);
+		}
+	}
+}
 
-// void	init_anim_images(t_game *game)
-// {
-// 	game->image = malloc(sizeof(t_img));
-// 	game->anim_img->player_01 = mlx_texture_to_image(game->mlx, game->anim_texture->player_01);
-// 	game->anim_img->player_02 = mlx_texture_to_image(game->mlx, game->anim_texture->player_02);
-// 	if ((!(game->anim_img->player_01)) || (!(game->anim_img->player_02)))
-// 		ft_error(ERROR_ASSET_LOAD, NULL);
-// }
+void	init_anim_images(t_game *game)
+{
+	game->img.player_00 = create_img(game->mlx, "./assets/player/p-idle-00.png");
+	game->img.player_01 = create_img(game->mlx, "./assets/player/p-idle-01.png");
+	game->img.player_02 = create_img(game->mlx, "./assets/player/p-idle-02.png");
+	game->img.player_03 = create_img(game->mlx, "./assets/player/p-idle-03.png");
+	if ((!(game->img.player_00)) || (!(game->img.player_01) 
+		|| (!(game->img.player_02)) || (!(game->img.player_03))))
+		ft_error(ERROR_IMG_B, NULL);
+}
 
-// void	init_anim_textures(t_game *game)
-// {
-// 	game->texture = malloc(sizeof(t_img));
-// 	game->anim_texture->player_01 = mlx_load_png("./assets/player/pagu-idle-01-64px.png");
-// 	game->anim_texture->player_02 = mlx_load_png("./assets/player/pagu-idle-01-64px.png");
-// 	if ((!(game->anim_texture->player_01)) || (!(game->anim_texture->player_02)))
-// 		ft_error(ERROR_ASSET_LOAD, NULL);
-// 	init_anim_images(game);
-// 	delete_textures(game);
-// }
+void	anim_images_off(t_game *game)
+{
+	game->img.player_00->enabled = 0;
+	game->img.player_01->enabled = 0;
+	game->img.player_02->enabled = 0;
+	game->img.player_03->enabled = 0;
+}
 
-// void	animate_player(t_game *game, int32_t time)
-// {
-// 	if ((time % 3 == 0))
-// 	{
-// 		game->player_data[x]->img->enabled = 0;
-// 		game->player_data[y]->img->enabled = 1;
-// 	}
-// 	if ((time % 6 == 0))
-// 	{
-// 		game->player_data[x]->img->enabled = 0;
-// 		game->player_data[y]->img->enabled = 1;
-// 	}
-// }
+void	animate_player(t_game *game)
+{
+	static int	frame;
+
+	anim_images_off(game);
+	if (frame == 0)
+		game->img.player_00->enabled = 1;
+	if (frame == 1)
+		game->img.player_01->enabled = 1;
+	if (frame == 2)
+		game->img.player_02->enabled = 1;
+	if (frame == 3)
+		game->img.player_03->enabled = 1;
+	frame++;
+	if (frame > 3)
+		frame = 0;
+}

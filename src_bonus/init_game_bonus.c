@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:47:30 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/06 23:54:41 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/11 21:29:58 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int32_t	init_game(char *argv, t_game *game)
 	get_player_pos(game->map, &game->player_pos);
 	occurence_count(game->map, &game->occ);
 	mlx_key_hook(game->mlx, &init_move, game);
+	mlx_loop_hook(game->mlx, &timer, game);
 	mlx_loop(game->mlx);
 	free_game(game);
 	return (EXIT_SUCCESS);

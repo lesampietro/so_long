@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 19:47:56 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/06 23:54:25 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/11 21:05:35 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,9 @@ void	display_img(t_game *game)
 	game->img.wall = create_img(game->mlx, "./assets/tiles/wall.png");
 	game->img.collects = create_img(game->mlx, "./assets/tiles/collect.png");
 	game->img.exit = create_img(game->mlx, "./assets/tiles/exit.png");
-	game->img.player = create_img(game->mlx, "./assets/player/p-idle-03.png");
+	init_anim_images(game);
 	if ((!(game->img.floor)) || (!(game->img.wall)
-			|| (!(game->img.collects)) || (!(game->img.exit))
-			|| (!(game->img.player))))
+		|| (!(game->img.collects)) || (!(game->img.exit))))
 		ft_error(ERROR_IMG_B, NULL);
 }
 
@@ -46,5 +45,8 @@ void	delete_images(t_game *game)
 	mlx_delete_image(game->mlx, game->img.wall);
 	mlx_delete_image(game->mlx, game->img.collects);
 	mlx_delete_image(game->mlx, game->img.exit);
-	mlx_delete_image(game->mlx, game->img.player);
+	mlx_delete_image(game->mlx, game->img.player_00);
+	mlx_delete_image(game->mlx, game->img.player_01);
+	mlx_delete_image(game->mlx, game->img.player_02);
+	mlx_delete_image(game->mlx, game->img.player_03);
 }
