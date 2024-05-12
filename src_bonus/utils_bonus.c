@@ -6,11 +6,24 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 20:15:23 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/12 01:40:36 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/12 06:38:56 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
+
+void	put_counter(t_game *game)
+{
+	char	*str;
+
+	str = ft_itoa(game->steps);
+	if (!str)
+		ft_error(ERROR_STEPS_B, NULL);
+	if (game->counter)
+		mlx_delete_image(game->mlx, game->counter);
+	game->counter = mlx_put_string(game->mlx, str, 10, 10);
+	free(str);
+}
 
 void	count_map_size(t_game *game)
 {
@@ -34,6 +47,7 @@ void	count_map_size(t_game *game)
 void	counter(t_game *game)
 {
 	game->steps++;
+	put_counter(game);
 	ft_printf("Steps: %i\n", game->steps);
 }
 

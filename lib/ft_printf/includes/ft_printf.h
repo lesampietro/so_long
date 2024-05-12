@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 20:32:35 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/01/20 17:26:20 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/12 06:47:24 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int		print_hex(char specifier, unsigned long n, unsigned int base);
 int		print_ptr(unsigned long ptr);
 int		ft_putchar_fd(char c, int fd);
 int		ft_putstr_fd(char *s, int fd);
-int		ft_count_digits(int n);
-char	*ft_makestr(int n, int digits, char *str);
-char	*ft_itoa(int n);
+int		ft_count_digits_pf(int n);
+char	*ft_makestr_pf(int n, int digits, char *str);
+char	*ft_itoa_pf(int n);
 
 #endif

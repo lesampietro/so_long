@@ -6,11 +6,22 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 19:46:54 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/12 03:21:58 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/12 06:23:59 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
+
+void	validate_enemy(mlx_key_data_t keydata, t_game *game)
+{
+	if (game->map[game->player_pos.y][game->player_pos.x] == 'G')
+		game->end_game = 0;
+	if (keydata.action == MLX_RELEASE && game->end_game == 0)
+	{
+		ft_printf("You lost!\n");
+		free_game(game);
+	}
+}
 
 void	validate_exit(mlx_key_data_t keydata, t_game *game)
 {
@@ -23,8 +34,12 @@ void	validate_exit(mlx_key_data_t keydata, t_game *game)
 			== game->img.p_r0->instances[0].y)
 			game->end_game = 0;
 	}
-	if (keydata.action == MLX_RELEASE && game->end_game == 0)
+	if (keydata.action == MLX_RELEASE 
+		&& (game->map[game->player_pos.y][game->player_pos.x] == 'E'))
+	{	
+		ft_printf("Congratulations! Pagu ate all the fish!\n");
 		free_game(game);
+	}
 }
 
 void	validate_collects(t_game *game)
@@ -96,4 +111,5 @@ void	init_move(mlx_key_data_t keydata, void *param)
 		&& keydata.action == MLX_PRESS)
 		validate_moves(game, RIGHT);
 	validate_exit (keydata, game);
+	validate_enemy(keydata, game);
 }

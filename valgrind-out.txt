@@ -1,0 +1,6 @@
+==131823== Memcheck, a memory error detector
+==131823== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==131823== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==131823== Command: ./so_long_bonus maps/valid_bonus_map.ber
+==131823== Parent PID: 90013
+==131823== 

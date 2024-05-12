@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:47:30 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/11 21:29:58 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/12 06:39:53 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	init_game_image(t_game *game)
 	display_img(game);
 	put_floor_n_walls(game);
 	put_collects_n_exit(game);
+	put_ghost(game);
 	game->img.exit->enabled = false;
 	put_player(game);
 	display_icon(game);
@@ -48,6 +49,7 @@ int32_t	init_game(char *argv, t_game *game)
 	count_map_size(game);
 	init_window(game);
 	init_game_image(game);
+	put_counter(game);
 	get_player_pos(game->map, &game->player_pos);
 	occurence_count(game->map, &game->occ);
 	mlx_key_hook(game->mlx, &init_move, game);

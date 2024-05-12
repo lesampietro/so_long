@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 20:31:57 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/03/27 21:30:39 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/12 06:46:56 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_putstr_fd(char *s, int fd)
 	return (i);
 }
 
-int	ft_count_digits(int n)
+int	ft_count_digits_pf(int n)
 {
 	int	digits;
 
@@ -59,7 +59,7 @@ int	ft_count_digits(int n)
 	return (digits);
 }
 
-char	*ft_makestr(int n, int digits, char *str)
+char	*ft_makestr_pf(int n, int digits, char *str)
 {
 	int		begin;
 	long	max;
@@ -82,14 +82,14 @@ char	*ft_makestr(int n, int digits, char *str)
 	return (str);
 }
 
-char	*ft_itoa(int n)
+char	*ft_itoa_pf(int n)
 {
 	char	*str;
 	int		size;
 
-	size = ft_count_digits(n);
+	size = ft_count_digits_pf(n);
 	str = malloc((size + 1) * sizeof(char));
 	if (!str)
 		return (0);
-	return (ft_makestr(n, size, str));
+	return (ft_makestr_pf(n, size, str));
 }

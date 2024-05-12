@@ -6,13 +6,13 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 18:50:53 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/12 03:22:43 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/12 06:38:19 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_BONUS_H
 # define SO_LONG_BONUS_H
-# define VALID_CHARSET "01PCE\n"
+# define VALID_CHARSET "01PCEG\n"
 # define TILE 64
 
 # define ERROR_ARG_B "Error.\nMissing argument.\n"
@@ -28,10 +28,12 @@
 # define ERROR_MAP_P_B "Error.\nInvalid number of players.\n"
 # define ERROR_MAP_E_B "Error.\nInvalid number of exits.\n"
 # define ERROR_MAP_C_B "Error.\nThere are no collectibles on the map.\n"
+# define ERROR_MAP_G_B "Error.\nThere are no enemies on the map.\n"
 # define ERROR_MAP_CHARS_B "Error.\nMap with invalid characters.n"
 # define ERROR_TEXTURE_B "Error.\nTexture could not be loaded.\n"
 # define ERROR_IMG_B "Error.\nImage could not be created.\n"
 # define ERROR_ASSET_DISPLAY_B "Error.\nAssets could not be displayed.\n"
+# define ERROR_STEPS_B "Error.\nStep counter was not malloc'd.\n"
 
 # include <stdlib.h>
 # include "../lib/MLX42/include/MLX42/MLX42.h"
@@ -62,6 +64,7 @@ struct s_map
 	int		player;
 	int		collects;
 	int		defo_collects;
+	int		ghosts;
 	int		exit;
 	int		columns;
 	int		lines;
@@ -74,6 +77,7 @@ struct s_img
 	mlx_image_t	*floor;
 	mlx_image_t	*collects;
 	mlx_image_t	*exit;
+	mlx_image_t	*ghost;
 	mlx_image_t	*p_r0;
 	mlx_image_t	*p_r1;
 	mlx_image_t	*p_r2;
@@ -95,6 +99,8 @@ struct s_game
 	int				player_side;
 	t_pos			player_pos;
 	t_map			occ;
+	mlx_image_t		*counter;
+	mlx_image_t		*counter_txt;
 	mlx_texture_t	*icon;
 	t_img			img;
 };
@@ -120,6 +126,7 @@ void		init_values(t_game *game);
 void		get_player_pos(char **map, t_pos *position);
 
 /*Image functions*/
+void		put_counter(t_game *game);
 void		count_map_size(t_game *game);
 void		init_game_image(t_game *game);
 mlx_image_t	*create_img(mlx_t *mlx, char *img_path);
@@ -128,6 +135,7 @@ void		display_icon(t_game *game);
 void		put_player(t_game *game);
 void		put_floor_n_walls(t_game *game);
 void		put_collects_n_exit(t_game *game);
+void		put_ghost(t_game *game);
 
 /*Moving and playing functions*/
 void		init_move(mlx_key_data_t keydata, void *param);

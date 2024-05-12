@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 17:40:08 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/06 23:54:19 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/12 05:20:09 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	flood_path(char **map, int x, int y)
 {
-	if (map[x][y] != '1')
+	if (map[x][y] != '1' && map[x][y] != 'G')
 	{
 		map[x][y] = '1';
 		flood_path(map, x + 1, y);

@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 18:25:59 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/03/27 21:30:42 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/12 06:45:01 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	print_num(long n)
 	int				len;
 	char			*var_int;
 
-	var_int = ft_itoa(n);
+	var_int = ft_itoa_pf(n);
 	len = ft_putstr_fd(var_int, 1);
 	free(var_int);
 	return (len);
@@ -61,7 +61,6 @@ int	print_hex(char specifier, unsigned long n, unsigned int base)
 		return (count += print_hex(specifier, n % base, base));
 	}
 }
-// To invert any number, put "-" in front of the integer -> (-n);
 
 int	print_ptr(unsigned long ptr)
 {
