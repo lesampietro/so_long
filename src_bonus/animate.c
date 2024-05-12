@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 22:55:28 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/11 21:32:56 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/12 01:40:29 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ void	timer(void *param)
 
 void	init_anim_images(t_game *game)
 {
-	game->img.player_00 = create_img(game->mlx, "./assets/player/p-idle-00.png");
-	game->img.player_01 = create_img(game->mlx, "./assets/player/p-idle-01.png");
-	game->img.player_02 = create_img(game->mlx, "./assets/player/p-idle-02.png");
-	game->img.player_03 = create_img(game->mlx, "./assets/player/p-idle-03.png");
+	game->img.player_00 = create_img(game->mlx, "./assets/player/p-idle-R-00.png");
+	game->img.player_01 = create_img(game->mlx, "./assets/player/p-idle-R-01.png");
+	game->img.player_02 = create_img(game->mlx, "./assets/player/p-idle-R-02.png");
+	game->img.player_03 = create_img(game->mlx, "./assets/player/p-idle-R-03.png");
 	if ((!(game->img.player_00)) || (!(game->img.player_01) 
 		|| (!(game->img.player_02)) || (!(game->img.player_03))))
 		ft_error(ERROR_IMG_B, NULL);
