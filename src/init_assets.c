@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 19:47:56 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/06 22:43:59 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/11 22:21:16 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	display_img(t_game *game)
 	game->img.wall = create_img(game->mlx, "./assets/tiles/wall.png");
 	game->img.collects = create_img(game->mlx, "./assets/tiles/collect.png");
 	game->img.exit = create_img(game->mlx, "./assets/tiles/exit.png");
-	game->img.player = create_img(game->mlx, "./assets/player/p-idle-03.png");
+	game->img.player = create_img(game->mlx, "./assets/player/p-idle-00.png");
 	if ((!(game->img.floor)) || (!(game->img.wall)
 			|| (!(game->img.collects)) || (!(game->img.exit))
 			|| (!(game->img.player))))
