@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 18:50:53 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/12 06:38:19 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/13 12:45:49 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@
 # define ERROR_IMG_B "Error.\nImage could not be created.\n"
 # define ERROR_ASSET_DISPLAY_B "Error.\nAssets could not be displayed.\n"
 # define ERROR_STEPS_B "Error.\nStep counter was not malloc'd.\n"
+# define END_SUCCESS "Congratulations!\nPagu's belly is full and she's happy'\n"
+# define END_FAIL "Oh no!\nYou lost!\n"
 
 # include <stdlib.h>
 # include "../lib/MLX42/include/MLX42/MLX42.h"
@@ -154,8 +156,8 @@ void		check_side(t_game *game);
 void		animate_player_right(t_game *game);
 void		animate_player_left(t_game *game);
 
-	/*Cleaning & error functions*/
-	void delete_images(t_game *game);
+/*Cleaning & error functions*/
+void		delete_images(t_game *game);
 void		delete_textures(t_game *game);
 void		free_map(char **map);
 void		free_game(t_game *game);

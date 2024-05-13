@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 19:46:54 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/05 19:24:58 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/13 12:32:44 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ void	validate_exit(mlx_key_data_t keydata, t_game *game)
 			game->end_game = 0;
 	}
 	if (keydata.action == MLX_RELEASE && game->end_game == 0)
+	{
+		ft_printf(END_SUCCESS);
 		free_game(game);
+	}
 }
 
 void	player_moves(t_game *game, int movement)

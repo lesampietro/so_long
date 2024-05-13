@@ -6,7 +6,7 @@
 /*   By: lsampiet <lsampiet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 18:50:53 by lsampiet          #+#    #+#             */
-/*   Updated: 2024/05/06 22:40:58 by lsampiet         ###   ########.fr       */
+/*   Updated: 2024/05/13 12:36:17 by lsampiet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@
 # define ERROR_TEXTURE "Error.\nTexture could not be loaded.\n"
 # define ERROR_IMG "Error.\nImage could not be created.\n"
 # define ERROR_ASSET_DISPLAY "Error.\nAssets could not be displayed.\n"
+# define END_SUCCESS "Congratulations!\nPagu's belly is full and she's happy'\n"
+# define END_FAIL "Oh no!\nYou lost!\n"
 
 # include <stdlib.h>
 # include "../lib/MLX42/include/MLX42/MLX42.h"
